@@ -62,15 +62,26 @@ const StudentItem = ({item}) => {
     });
 
     const handleShowReport = async () => {
+        setLoadingReport(true);
         try {
-            const lastestReport = await getReportByStudentId(item.id)
-            if (!lastestReport) {
-                return Alert.alert("Error", "No Report found for this student. Generate it first.")
+            const latestReport = await getReportByStudentId(item.id);
+            if (!latestReport) {
+                return Alert.alert("Error", "No report found for this student. Generate it first.");
             }
+
+            const report = {
+                report_data: latestReport.report_data,
+                summary: latestReport.report_summary,
+            };
+            setReport(report);
+
         } catch (e) {
-            Alert.alert("Error", e.message)
+            Alert.alert("Error", e.message);
+        } finally {
+            setLoadingReport(false);
         }
-    }
+    };
+
 
     return (
         <View style={styles.itemContainer}>
