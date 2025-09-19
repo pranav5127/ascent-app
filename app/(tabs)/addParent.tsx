@@ -10,46 +10,49 @@ import {
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
 
 const API_URL = "http://192.168.1.34:9900/users/"
-// const API_URL = "http://10.0.2.2:9900/users"
-// const API_URL = "http://localhost:9900/users"
 
 export default function AddParent() {
     const [email, setEmail] = useState("")
     const [externalId, setExternalId] = useState("")
-    const [role, setRole] = useState("parent")
+    const role = "parent"
     const [loading, setLoading] = useState(false)
+    const [mobile, setMobile] = useState("")
     const [response, setResponse] = useState<any>(null)
 
     const addNewParent = async () => {
-        if (!externalId || !email) {
-            alert("Please fill all fields")
-            return
+        if (!externalId.trim() || !email.trim() || !mobile.trim()) {
+            alert("Please fill all fields");
+            return;
         }
 
+        const payload = {
+            external_id: externalId.trim(),
+            email: email.trim(),
+            mobile_number: mobile.trim(),
+            role: role,
+       };
+
+        console.log("Sending payload:", payload);
+
         try {
-            setLoading(true)
+            setLoading(true);
             const res = await fetch(API_URL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    external_id: externalId,
-                    email: email,
-                    role: role,
-                }),
-            })
+                body: JSON.stringify(payload),
+            });
 
             const text = await res.text()
 
             if (!res.ok) {
                 console.error("Backend error:", text)
-                throw new Error(`Error ${res.status}: ${text}`)
+                new Error(`Error ${res.status}: ${text}`)
             }
 
             const data = JSON.parse(text)
             setResponse(data)
-            alert("Parent added successfully!")
         } catch (error) {
             console.error("Request failed:", error)
             alert("Something went wrong! Check server logs and network.")
@@ -60,7 +63,7 @@ export default function AddParent() {
 
     return (
         <SafeAreaProvider>
-            <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
+            <SafeAreaView style={styles.container} edges={["top", "left", "right", "bottom"]}>
                 <Text style={styles.title}>Add Parent</Text>
                 <View style={styles.field}>
 
@@ -69,7 +72,7 @@ export default function AddParent() {
                         value={externalId}
                         onChangeText={setExternalId}
                         style={styles.input}
-                        placeholder="e.g. abcde2"
+                        placeholder="parent name"
                         placeholderTextColor="#aaa"
                     />
                 </View>
@@ -80,23 +83,25 @@ export default function AddParent() {
                         value={email}
                         onChangeText={setEmail}
                         style={styles.input}
-                        placeholder="e.g. p3@example.com"
+                        placeholder="e.g. parent@example.com"
                         placeholderTextColor="#aaa"
                         keyboardType="email-address"
                         autoCapitalize="none"
                     />
                 </View>
-
-                <View style={styles.field}>
-                    <Text style={styles.label}>Role</Text>
+                <View>
+                    <Text style={styles.label}>Mobile number</Text>
                     <TextInput
-                        value={role}
-                        onChangeText={setRole}
+                        value={mobile}
+                        onChangeText={setMobile}
                         style={styles.input}
-                        placeholder="parent"
+                        placeholder="xxxxxxxxxx"
                         placeholderTextColor="#aaa"
+                        keyboardType="number-pad"
+                        autoCapitalize="none"
                     />
                 </View>
+
 
                 <TouchableOpacity style={styles.button} onPress={addNewParent}>
                     <Text style={styles.buttonText}>Submit</Text>

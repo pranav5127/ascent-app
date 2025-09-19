@@ -20,13 +20,20 @@ export default function TabLayout() {
                 name="addParent"
                 options={{
                     title: "Parents",
-                    tabBarIcon: ({color}) => <Ionicons name="people-sharp" size={24} color={color}/>
+                    tabBarIcon: ({color}) =><Ionicons name="person-add" size={24} color={color} />
                 }}
             />
             <Tabs.Screen
                 name="parentList" options={{
-                title: "Parents",
+                title: "Parent List",
                 tabBarIcon: ({color}) => <Ionicons name="people-sharp" size={24} color={color}/>
+            }}
+            />
+
+            <Tabs.Screen
+                name="studentList" options={{
+                title: "Student List",
+                tabBarIcon: ({color}) => <Ionicons name="list-sharp" size={24} color={color} />
             }}
             />
 
