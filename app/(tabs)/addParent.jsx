@@ -17,7 +17,7 @@ export default function AddParent() {
     const role = "parent"
     const [loading, setLoading] = useState(false)
     const [mobile, setMobile] = useState("")
-    const [response, setResponse] = useState<any>(null)
+    const [response, setResponse] = useState(null)
 
     const addNewParent = async () => {
         if (!externalId.trim() || !email.trim() || !mobile.trim()) {

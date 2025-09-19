@@ -6,7 +6,7 @@ import {Link} from 'expo-router'
 const URL = "http://192.168.1.34:9900/users/"
 
 // Collapsible item component
-const Item = ({item}: { item: any }) => {
+const Item = ({item}) => {
     const [expanded, setExpanded] = useState(false)
     const animation = useRef(new Animated.Value(0)).current
 
@@ -95,7 +95,7 @@ export default function ParentList() {
                     <FlatList
                         data={response}
                         renderItem={({item}) => <Item item={item}/>}
-                        keyExtractor={(item: any) => item.id}
+                        keyExtractor={(item) => item.id}
                         refreshing={refreshing}
                         onRefresh={onRefresh}
                     />
