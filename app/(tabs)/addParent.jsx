@@ -21,8 +21,8 @@ export default function AddParent() {
 
     const addNewParent = async () => {
         if (!externalId.trim() || !email.trim() || !mobile.trim()) {
-            alert("Please fill all fields");
-            return;
+            alert("Please fill all fields")
+            return
         }
 
         const payload = {
@@ -30,9 +30,9 @@ export default function AddParent() {
             email: email.trim(),
             mobile_number: mobile.trim(),
             role: role,
-       };
+       }
 
-        console.log("Sending payload:", payload);
+        console.log("Sending payload:", payload)
 
         try {
             setLoading(true);
@@ -42,7 +42,7 @@ export default function AddParent() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(payload),
-            });
+            })
 
             const text = await res.text()
 

@@ -2,8 +2,9 @@ import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context"
 import {View, Text, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity, Animated} from "react-native"
 import {useState, useEffect, useRef} from "react"
 import {Link} from 'expo-router'
+import {DB_URL} from "@/constants/urls";
 
-const URL = "http://192.168.1.34:9900/users/"
+// const URL = "http://192.168.1.34:9900/users/"
 
 // Collapsible item component
 const Item = ({item}) => {
@@ -61,7 +62,7 @@ export default function ParentList() {
 
     const parentList = async () => {
         try {
-            const res = await fetch(URL, {
+            const res = await fetch(DB_URL, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

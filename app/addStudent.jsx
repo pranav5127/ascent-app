@@ -2,8 +2,9 @@ import { useState } from "react"
 import { Text, TextInput, StyleSheet, View, TouchableOpacity, ActivityIndicator, Alert } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { useLocalSearchParams } from "expo-router"
+import {STUDENT_URL} from "@/constants/urls";
 
-const URL = "http://192.168.1.34:9900/students/"
+// const STUDENT_URL = "http://192.168.1.34:9900/students/"
 
 export default function AddStudent() {
     const { parent_id } = useLocalSearchParams()
@@ -20,7 +21,7 @@ export default function AddStudent() {
         try {
             setLoading(true)
 
-            const res = await fetch(URL, {
+            const res = await fetch(STUDENT_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

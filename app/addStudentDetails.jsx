@@ -1,4 +1,4 @@
-import { useState } from "react" 
+import { useState } from "react";
 import {
     Text,
     TextInput,
@@ -10,69 +10,71 @@ import {
     Alert,
     KeyboardAvoidingView,
     Platform,
-} from "react-native" 
-import { SafeAreaView } from "react-native-safe-area-context" 
-import { useLocalSearchParams } from "expo-router" 
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useLocalSearchParams } from "expo-router";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
-const API_URL = "http://192.168.1.34:9900"
+const API_URL = "http://192.168.1.34:9900";
 
 export default function AddStudentDetails() {
-    const { student_id } = useLocalSearchParams()
-
+    const { student_id } = useLocalSearchParams();
 
     // Marks
-    const [examType, setExamType] = useState("")
-    const [examDate, setExamDate] = useState("")
-    const [subjects, setSubjects] = useState([{ name: "", score: "", maxScore: "" }])
+    const [examType, setExamType] = useState("");
+    const [examDate, setExamDate] = useState("");
+    const [examDateObj, setExamDateObj] = useState(new Date());
+    const [examDatePickerVisible, setExamDatePickerVisible] = useState(false);
+    const [subjects, setSubjects] = useState([{ name: "", score: "", maxScore: "" }]);
 
     // Attendance
-    const [month, setMonth] = useState("")
-    const [present, setPresent] = useState("")
-    const [absent, setAbsent] = useState("")
+    const [month, setMonth] = useState("");
+    const [present, setPresent] = useState("");
+    const [absent, setAbsent] = useState("");
 
     // Activities
     const [activities, setActivities] = useState([
-        { type: "", description: "", achievement: "", date: "" },
-    ])
+        { type: "", description: "", achievement: "", date: "", showDatePicker: false },
+    ]);
 
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
 
     // ---------- Subject Handlers ----------
-    const addSubject = () => setSubjects([...subjects, { name: "", score: "", maxScore: "" }])
+    const addSubject = () => setSubjects([...subjects, { name: "", score: "", maxScore: "" }]);
     const removeSubject = (index) => {
-        const copy = [...subjects]
-        copy.splice(index, 1)
-        setSubjects(copy)
-    }
+        const copy = [...subjects];
+        copy.splice(index, 1);
+        setSubjects(copy);
+    };
     const updateSubject = (index, field, value) => {
-        const copy = [...subjects]
-        copy[index][field] = value
-        setSubjects(copy)
-    }
+        const copy = [...subjects];
+        copy[index][field] = value;
+        setSubjects(copy);
+    };
 
     // ---------- Activity Handlers ----------
     const addActivity = () =>
-        setActivities([...activities, { type: "", description: "", achievement: "", date: "" }])
+        setActivities([...activities, { type: "", description: "", achievement: "", date: "", showDatePicker: false }]);
     const removeActivity = (index) => {
-        const copy = [...activities]
-        copy.splice(index, 1)
-        setActivities(copy)
-    }
+        const copy = [...activities];
+        copy.splice(index, 1);
+        setActivities(copy);
+    };
     const updateActivity = (index, field, value) => {
-        const copy = [...activities]
-        copy[index][field] = value
-        setActivities(copy)
-    }
+        const copy = [...activities];
+        copy[index][field] = value;
+        setActivities(copy);
+    };
 
     // ---------- Submit ----------
     const saveDetails = async () => {
         if (!student_id) {
-            Alert.alert("Error", "Student ID missing")
-            return
+            Alert.alert("Error", "Student ID missing");
+            return;
         }
 
         try {
-            setLoading(true)
+            setLoading(true);
 
             const subjectScores = subjects
                 .filter((s) => s.name.trim() !== "")
@@ -80,23 +82,23 @@ export default function AddStudentDetails() {
                     acc[s.name.trim()] = {
                         score: Number(s.score),
                         max_score: Number(s.maxScore),
-                    }
-                    return acc
-                }, {})
+                    };
+                    return acc;
+                }, {});
 
             const marksPayload = {
                 student_id,
                 exam_type: examType,
                 subject_scores: subjectScores,
                 date: examDate,
-            }
+            };
 
             const attendancePayload = {
                 student_id,
                 month,
                 days_present: Number(present),
                 days_absent: Number(absent),
-            }
+            };
 
             const activitiesPayload = activities
                 .filter((a) => a.type.trim() !== "")
@@ -106,48 +108,47 @@ export default function AddStudentDetails() {
                     description: a.description,
                     achievement: a.achievement,
                     date: a.date,
-                }))
+                }));
 
-            // Debug logs
-            console.log("Marks Payload:", JSON.stringify(marksPayload))
-            console.log("Attendance Payload:", JSON.stringify(attendancePayload))
-            console.log("Activities Payload:", JSON.stringify(activitiesPayload))
+            console.log("Marks Payload:", JSON.stringify(marksPayload));
+            console.log("Attendance Payload:", JSON.stringify(attendancePayload));
+            console.log("Activities Payload:", JSON.stringify(activitiesPayload));
 
-            // ---------- API Calls ----------
+            // API Calls
             const marksRes = await fetch(`${API_URL}/marks/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(marksPayload),
-            })
-            console.log("Marks Response Status:", marksRes.status, await marksRes.text())
-            if (!marksRes.ok) throw new Error("Marks save failed")
+            });
+            console.log("Marks Response:", marksRes.status, await marksRes.text());
+            if (!marksRes.ok) throw new Error("Marks save failed");
 
             const attendanceRes = await fetch(`${API_URL}/attendance/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(attendancePayload),
-            })
-            console.log("Attendance Response Status:", attendanceRes.status, await attendanceRes.text())
-            if (!attendanceRes.ok) throw new Error("Attendance save failed")
+            });
+            console.log("Attendance Response:", attendanceRes.status, await attendanceRes.text());
+            if (!attendanceRes.ok) throw new Error("Attendance save failed");
 
             for (const act of activitiesPayload) {
                 const actRes = await fetch(`${API_URL}/activities/`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(act),
-                })
-                console.log("Activity Response Status:", actRes.status, await actRes.text())
-                if (!actRes.ok) throw new Error("Activity save failed")
+                });
+                console.log("Activity Response:", actRes.status, await actRes.text());
+                if (!actRes.ok) throw new Error("Activity save failed");
             }
 
-            Alert.alert("Success", "Student details saved successfully")
+            Alert.alert("Success", "Student details saved successfully");
         } catch (err) {
-            console.error("Save Error:", err)
-            Alert.alert("Error", "Failed to save details: " + err)
+            console.error("Save Error:", err);
+            Alert.alert("Error", "Failed to save details: " + err);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
+    };
 
     return (
         <SafeAreaView style={styles.container}>
@@ -164,32 +165,50 @@ export default function AddStudentDetails() {
                     <TextInput
                         style={styles.input}
                         placeholder="Exam Type"
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="#aaa"
                         value={examType}
                         onChangeText={setExamType}
                     />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Date (YYYY-MM-DD)"
-                        placeholderTextColor="#fff"
-                        value={examDate}
-                        onChangeText={setExamDate}
-                    />
 
+                    {/* Exam Date Picker */}
+                    <TouchableOpacity onPress={() => setExamDatePickerVisible(true)}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Date (YYYY-MM-DD)"
+                            placeholderTextColor="#aaa"
+                            value={examDate}
+                            editable={false}
+                            pointerEvents="none"
+                        />
+                    </TouchableOpacity>
+                    {examDatePickerVisible && (
+                        <DateTimePicker
+                            value={examDateObj}
+                            mode="date"
+                            display="default"
+                            onChange={(event, selectedDate) => {
+                                setExamDatePickerVisible(false);
+                                if (selectedDate) {
+                                    setExamDateObj(selectedDate);
+                                    setExamDate(selectedDate.toISOString().split("T")[0]);
+                                }
+                            }}
+                        />
+                    )}
 
                     {subjects.map((s, i) => (
                         <View key={i} style={styles.row}>
                             <TextInput
                                 style={[styles.input, { flex: 1 }]}
                                 placeholder="Subject"
-                                placeholderTextColor="#fff"
+                                placeholderTextColor="#aaa"
                                 value={s.name}
                                 onChangeText={(t) => updateSubject(i, "name", t)}
                             />
                             <TextInput
                                 style={[styles.input, { flex: 1 }]}
                                 placeholder="Score"
-                                placeholderTextColor="#fff"
+                                placeholderTextColor="#aaa"
                                 value={s.score}
                                 onChangeText={(t) => updateSubject(i, "score", t)}
                                 keyboardType="numeric"
@@ -197,7 +216,7 @@ export default function AddStudentDetails() {
                             <TextInput
                                 style={[styles.input, { flex: 1 }]}
                                 placeholder="Max"
-                                placeholderTextColor="#fff"
+                                placeholderTextColor="#aaa"
                                 value={s.maxScore}
                                 onChangeText={(t) => updateSubject(i, "maxScore", t)}
                                 keyboardType="numeric"
@@ -218,14 +237,14 @@ export default function AddStudentDetails() {
                     <TextInput
                         style={styles.input}
                         placeholder="Month (e.g. September)"
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="#aaa"
                         value={month}
                         onChangeText={setMonth}
                     />
                     <TextInput
                         style={styles.input}
                         placeholder="Days Present"
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="#aaa"
                         value={present}
                         onChangeText={setPresent}
                         keyboardType="numeric"
@@ -233,7 +252,7 @@ export default function AddStudentDetails() {
                     <TextInput
                         style={styles.input}
                         placeholder="Days Absent"
-                        placeholderTextColor="#fff"
+                        placeholderTextColor="#aaa"
                         value={absent}
                         onChangeText={setAbsent}
                         keyboardType="numeric"
@@ -246,31 +265,50 @@ export default function AddStudentDetails() {
                             <TextInput
                                 style={styles.input}
                                 placeholder="Activity Type"
-                                placeholderTextColor="#fff"
+                                placeholderTextColor="#aaa"
                                 value={a.type}
                                 onChangeText={(t) => updateActivity(i, "type", t)}
                             />
                             <TextInput
                                 style={styles.input}
                                 placeholder="Description"
-                                placeholderTextColor="#fff"
+                                placeholderTextColor="#aaa"
                                 value={a.description}
                                 onChangeText={(t) => updateActivity(i, "description", t)}
                             />
                             <TextInput
                                 style={styles.input}
                                 placeholder="Achievement"
-                                placeholderTextColor="#fff"
+                                placeholderTextColor="#aaa"
                                 value={a.achievement}
                                 onChangeText={(t) => updateActivity(i, "achievement", t)}
                             />
-                            <TextInput
-                                style={styles.input}
-                                placeholder="Date (YYYY-MM-DD)"
-                                placeholderTextColor="#fff"
-                                value={a.date}
-                                onChangeText={(t) => updateActivity(i, "date", t)}
-                            />
+
+                            {/* Activity Date Picker */}
+                            <TouchableOpacity onPress={() => updateActivity(i, "showDatePicker", true)}>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Date (YYYY-MM-DD)"
+                                    placeholderTextColor="#aaa"
+                                    value={a.date}
+                                    editable={false}
+                                    pointerEvents="none"
+                                />
+                            </TouchableOpacity>
+                            {a.showDatePicker && (
+                                <DateTimePicker
+                                    value={a.date ? new Date(a.date) : new Date()}
+                                    mode="date"
+                                    display="default"
+                                    onChange={(event, selectedDate) => {
+                                        updateActivity(i, "showDatePicker", false);
+                                        if (selectedDate) {
+                                            updateActivity(i, "date", selectedDate.toISOString().split("T")[0]);
+                                        }
+                                    }}
+                                />
+                            )}
+
                             {activities.length > 1 && (
                                 <TouchableOpacity onPress={() => removeActivity(i)}>
                                     <Text style={styles.removeBtn}>Remove Activity</Text>
@@ -293,12 +331,12 @@ export default function AddStudentDetails() {
                 </ScrollView>
             </KeyboardAvoidingView>
         </SafeAreaView>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: "rgba(3,1,23,0.95)", padding: 20 },
-    title: { color: "#fff", fontSize: 24, fontWeight: "700", marginBottom: 20 },
+    title: { color: "#ffffff", fontSize: 24, fontWeight: "700", marginBottom: 20 },
     sectionTitle: { color: "#4cafef", fontSize: 18, fontWeight: "600", marginVertical: 10 },
     input: {
         height: 50,
@@ -322,4 +360,4 @@ const styles = StyleSheet.create({
     buttonText: { color: "#fff", fontWeight: "600", fontSize: 18 },
     addBtn: { color: "#4cafef", marginBottom: 10, fontWeight: "500" },
     removeBtn: { color: "red", marginLeft: 8, fontWeight: "500" },
-}) 
+});
