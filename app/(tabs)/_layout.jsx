@@ -1,42 +1,69 @@
-import {Tabs} from 'expo-router';
-import React from 'react';
-import {HapticTab} from '@/components/haptic-tab';
-import {Colors} from '@/constants/theme';
-import {useColorScheme} from '@/hooks/use-color-scheme';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import {Tabs} from 'expo-router'
+import {StatusBar} from 'expo-status-bar'
+import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 
-export default function TabLayout() {
-    const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
     return (
-        <Tabs
-            screenOptions={{
-                tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-                headerShown: false,
-                tabBarButton: HapticTab,
-            }}>
+        <>
+            <Tabs
+                screenOptions={{
+                    headerShown: true,
+                    tabBarInactiveBackgroundColor:"#F4ECE7",
+                    tabBarActiveBackgroundColor:"#F4ECE7",
+                    tabBarActiveTintColor:"#E97351",
+                    animation: "shift",
+                    tabBarHideOnKeyboard: true,
+                    tabBarStyle: {
+                        borderTopWidth: 0,
+                        elevation: 0, // Android shadow
+                        shadowOpacity: 0, // iOS shadow
+                        backgroundColor: "#F4ECE7",
+                    },
 
-            <Tabs.Screen
-                name="addParent"
-                options={{
-                    title: "Parents",
-                    tabBarIcon: ({color}) =><Ionicons name="person-add" size={24} color={color} />
-                }}
-            />
-            <Tabs.Screen
-                name="parentList" options={{
-                title: "Parent List",
-                tabBarIcon: ({color}) => <Ionicons name="people-sharp" size={24} color={color}/>
             }}
-            />
-
-            <Tabs.Screen
-                name="studentList" options={{
-                title: "Student List",
-                tabBarIcon: ({color}) => <Ionicons name="list-sharp" size={24} color={color} />
-            }}
-            />
-
-        </Tabs>
+            >
+                <Tabs.Screen
+                    name="home"
+                    options={{
+                        title: "Home",
+                        tabBarLabel: "Home",
+                        tabBarIcon: ({color, size}) => (
+                            <MaterialIcons name="home" size={size} color={color}/>
+                        ),
+                    }}
+                />
+                <Tabs.Screen
+                    name="class"
+                    options={{
+                        title: "Class",
+                        tabBarLabel: "Class",
+                        tabBarIcon: ({color, size}) => (
+                            <MaterialIcons name="class" size={size} color={color}/>
+                        ),
+                    }}
+                />
+                <Tabs.Screen
+                    name="chatbot"
+                    options={{
+                        title: "Chatbot",
+                        tabBarLabel: "Chatbot",
+                        tabBarIcon: ({color, size}) => (
+                            <MaterialIcons name="chat" size={size} color={color}/>
+                        ),
+                    }}
+                />
+                <Tabs.Screen
+                    name="attendance"
+                    options={{
+                        title: "Attendance",
+                        tabBarLabel: "Attendance",
+                        tabBarIcon: ({color, size}) => (
+                            <MaterialIcons name="event" size={size} color={color}/>
+                        ),
+                    }}
+                />
+            </Tabs>
+            <StatusBar style="auto"/>
+        </>
     );
 }
