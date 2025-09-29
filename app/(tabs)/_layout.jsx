@@ -1,16 +1,29 @@
-import {Tabs} from 'expo-router'
+import {Tabs, useRouter} from 'expo-router'
 import {StatusBar} from 'expo-status-bar'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
+import {Ionicons} from "@expo/vector-icons";
+import {Pressable} from "react-native";
 
 export default function TabsLayout() {
+    const router = useRouter()
+
     return (
         <>
             <Tabs
                 screenOptions={{
                     headerShown: true,
-                    tabBarInactiveBackgroundColor:"#F4ECE7",
-                    tabBarActiveBackgroundColor:"#F4ECE7",
-                    tabBarActiveTintColor:"#E97351",
+                    headerRight: () => (
+                        <Pressable onPress={() => router.push("/profile/profile")} style={{marginRight: 15}}>
+                            <Ionicons name="person-circle-outline" size={28} color="black"/>
+                        </Pressable>
+                    ),
+                    headerStyle: {
+                        backgroundColor: "#F4ECE7",
+                    },
+                    headerTintColor: "#000000",
+                    tabBarInactiveBackgroundColor: "#F4ECE7",
+                    tabBarActiveBackgroundColor: "#F4ECE7",
+                    tabBarActiveTintColor: "#E97351",
                     animation: "shift",
                     tabBarHideOnKeyboard: true,
                     tabBarStyle: {
@@ -20,7 +33,7 @@ export default function TabsLayout() {
                         backgroundColor: "#F4ECE7",
                     },
 
-            }}
+                }}
             >
                 <Tabs.Screen
                     name="home"
@@ -63,7 +76,7 @@ export default function TabsLayout() {
                     }}
                 />
             </Tabs>
-            <StatusBar style="auto"/>
+            <StatusBar style="dark"/>
         </>
     );
 }

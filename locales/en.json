@@ -1,0 +1,8 @@
+{
+  "profile": {
+    "userId": "User ID",
+    "fullName": "Full Name",
+    "email": "Email",
+    "logout": "Log Out"
+  }
+}

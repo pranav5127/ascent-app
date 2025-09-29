@@ -2,13 +2,10 @@ import React, {useState, useRef, useEffect} from 'react';
 import {
     View,
     StyleSheet,
-    KeyboardAvoidingView,
-    Platform,
     FlatList,
     TextInput,
     Pressable,
     Keyboard,
-    TouchableWithoutFeedback,
 } from 'react-native';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
 import MessageBubble from '@/components/chatbot/message-bubble';

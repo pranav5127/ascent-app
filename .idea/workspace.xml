@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/profile/profile.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/teacher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/i18n.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/locales/en.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/locales/hi.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cursor/mcp.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ascent-app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/chatbot.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/chatbot.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+        <option value="JSX File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;pranav5127&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:pranav5127/ascent-app.git&quot;,
+    &quot;accountId&quot;: &quot;aa85ced6-5203-434d-bab7-28ff2d8dd470&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="32YoHn2x5mwiiBmCWf99iTr4RpE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/pranav/Projects/WebstormProjects/ascent-app/ascent-app/assets/images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/pranav/Projects/WebstormProjects/ascent-app/ascent-app/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images/" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/(tabs)" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/profile" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-WS-252.26199.162" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="" />
+      <created>1757606782478</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1757606782478</updated>
+      <workItem from="1757606783804" duration="3234000" />
+      <workItem from="1757653697366" duration="1068000" />
+      <workItem from="1757659067945" duration="200000" />
+      <workItem from="1757680314642" duration="8850000" />
+      <workItem from="1757704768259" duration="1954000" />
+      <workItem from="1757706734022" duration="3490000" />
+      <workItem from="1757743628748" duration="12000" />
+      <workItem from="1757743650298" duration="16797000" />
+      <workItem from="1757770151956" duration="7000" />
+      <workItem from="1757779684810" duration="2609000" />
+      <workItem from="1758028900274" duration="3626000" />
+      <workItem from="1758052955666" duration="4000" />
+      <workItem from="1758052989688" duration="11000" />
+      <workItem from="1758275350009" duration="4408000" />
+      <workItem from="1758279910678" duration="45000" />
+      <workItem from="1758279965519" duration="4127000" />
+      <workItem from="1758284104672" duration="395000" />
+      <workItem from="1758284567751" duration="5243000" />
+      <workItem from="1758289882019" duration="108000" />
+      <workItem from="1758290452293" duration="4145000" />
+      <workItem from="1758294621284" duration="2000" />
+      <workItem from="1758346266702" duration="806000" />
+      <workItem from="1758347081561" duration="9075000" />
+      <workItem from="1758360305453" duration="11552000" />
+      <workItem from="1758382306389" duration="4862000" />
+      <workItem from="1758505237389" duration="6000" />
+      <workItem from="1758980129149" duration="785000" />
+      <workItem from="1758992199533" duration="50000" />
+      <workItem from="1759053716659" duration="5295000" />
+      <workItem from="1759059021510" duration="2445000" />
+      <workItem from="1759141113181" duration="15943000" />
+    </task>
+    <task id="LOCAL-00001" summary="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh">
+      <option name="closed" value="true" />
+      <created>1758281120127</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758281120127</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh" />
+    <option name="LAST_COMMIT_MESSAGE" value="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh" />
+  </component>
+</project>
