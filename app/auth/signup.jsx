@@ -1,129 +1,127 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import {
-    StyleSheet,
-    Text,
-    View,
-    TextInput,
-    TouchableOpacity,
-} from "react-native"
-import { LinearGradient } from "expo-linear-gradient"
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import { Picker } from "@react-native-picker/picker"; // dropdown for student
 
-export default function SignInScreen() {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+export default function SignUpScreen() {
+  const [role, setRole] = useState("student");
 
-    const handleSignIn = () => {
-        console.log("Email:", email)
-        console.log("Password:", password)
-    }
+  return (
+    <View style={styles.container}>
+      {/* Card */}
+      <View style={styles.card}>
+        {/* Title */}
+        <Text style={styles.title}>Welcome</Text>
+        <Text style={styles.subtitle}>Sign up to join</Text>
 
-    const handleSignUp = () => {
-        console.log("Navigate to Sign Up screen")
-    }
+        {/* Input Fields */}
+        <TextInput placeholder="name" style={styles.input} />
+        <TextInput placeholder="email" style={styles.input} />
 
-    return (
-        <LinearGradient
-            colors={["#DE7017", "#EAAC72"]}
-            start={{ x: 0.1, y: 0 }}
-            end={{ x: 1, y: 0.9 }}
-            style={styles.container}
-        >
-            {/* Card */}
-            <View style={styles.card}>
-                <Text style={styles.welcomeText}>Welcome{"\n"}Back</Text>
-                <Text style={styles.subText}>login to continue</Text>
+        {/* Dropdown (Picker) */}
+        <View style={styles.pickerWrapper}>
+          <Picker
+            selectedValue={role}
+            onValueChange={(itemValue) => setRole(itemValue)}
+            style={styles.picker}
+          >
+            <Picker.Item label="student" value="student" />
+            <Picker.Item label="teacher" value="teacher" />
+            <Picker.Item label="admin" value="admin" />
+          </Picker>
+        </View>
 
-                {/* Email Input */}
-                <TextInput
-                    style={styles.input}
-                    placeholder="email"
-                    placeholderTextColor="#aaa"
-                    value={email}
-                    onChangeText={setEmail}
-                />
+        <TextInput
+          placeholder="password"
+          secureTextEntry
+          style={styles.input}
+        />
+        <TextInput
+          placeholder="confirm password"
+          secureTextEntry
+          style={styles.input}
+        />
 
-                {/* Password Input */}
-                <TextInput
-                    style={styles.input}
-                    placeholder="password"
-                    placeholderTextColor="#aaa"
-                    secureTextEntry
-                    value={password}
-                    onChangeText={setPassword}
-                />
+        {/* Already have an account */}
+        <Text style={styles.footerText}>
+          Have an account ?{" "}
+          <Text style={styles.linkText}>Sign In</Text>
+        </Text>
 
-                {/* Sign Up Link */}
-                <Text style={styles.signupText}>
-                    create new account?{" "}
-                    <TouchableOpacity onPress={handleSignUp}>
-                        <Text style={styles.signupLink}>Sign Up</Text>
-                    </TouchableOpacity>
-                </Text>
-
-                {/* Sign In Button */}
-                <TouchableOpacity style={styles.signinBtn} onPress={handleSignIn}>
-                    <Text style={styles.signinText}>Sign In</Text>
-                </TouchableOpacity>
-            </View>
-        </LinearGradient>
-    )
+        {/* Sign Up Button */}
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    card: {
-        backgroundColor: "#fff",
-        width: "85%",
-        borderRadius: 12,
-        padding: 25,
-        shadowColor: "#000",
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        elevation: 5,
-    },
-    welcomeText: {
-        fontSize: 26,
-        fontWeight: "700",
-        color: "#000",
-    },
-    subText: {
-        fontSize: 14,
-        color: "gray",
-        marginVertical: 10,
-    },
-    input: {
-        height: 45,
-        borderWidth: 1,
-        borderColor: "#aaa",
-        borderRadius: 20,
-        paddingHorizontal: 15,
-        marginVertical: 8,
-        backgroundColor: "#f2f2f2",
-    },
-    signupText: {
-        fontSize: 13,
-        color: "gray",
-        textAlign: "center",
-        marginVertical: 15,
-    },
-    signupLink: {
-        color: "blue",
-        fontWeight: "600",
-    },
-    signinBtn: {
-        backgroundColor: "black",
-        paddingVertical: 12,
-        borderRadius: 20,
-        alignItems: "center",
-    },
-    signinText: {
-        color: "#fff",
-        fontSize: 16,
-        fontWeight: "600",
-    },
-})
-
+  container: {
+    flex: 1,
+    backgroundColor: "#E97721", // orange bg
+    justifyContent: "center",
+  },
+  card: {
+    backgroundColor: "#fff",
+    margin: 20,
+    borderRadius: 12,
+    padding: 20,
+  },
+  title: {
+    fontSize: 26,
+    fontWeight: "600",
+    color: "#000",
+  },
+  subtitle: {
+    fontSize: 14,
+    color: "#555",
+    marginBottom: 25,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#bbb",
+    borderRadius: 20,
+    padding: 12,
+    fontSize: 16,
+    marginBottom: 15,
+  },
+  pickerWrapper: {
+    borderWidth: 1,
+    borderColor: "#bbb",
+    borderRadius: 20,
+    marginBottom: 15,
+    overflow: "hidden",
+  },
+  picker: {
+    height: 45,
+    width: "100%",
+  },
+  footerText: {
+    textAlign: "center",
+    fontSize: 14,
+    color: "#444",
+    marginBottom: 15,
+  },
+  linkText: {
+    color: "blue",
+    fontWeight: "500",
+  },
+  button: {
+    backgroundColor: "#000",
+    padding: 15,
+    borderRadius: 20,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "500",
+  },
+});
