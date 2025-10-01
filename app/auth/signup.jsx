@@ -1,70 +1,166 @@
-import React, {useState} from "react";
+import React, { useState, useContext } from "react"
 import {
     View,
     Text,
     TextInput,
     TouchableOpacity,
+    Alert,
     StyleSheet,
+    KeyboardAvoidingView,
+    ScrollView,
+    Platform,
 } from "react-native"
-import {Picker} from "@react-native-picker/picker"
-import {LinearGradient} from "expo-linear-gradient";
+import { Picker } from "@react-native-picker/picker"
+import { LinearGradient } from "expo-linear-gradient"
+import { AuthContext } from "@/context/AuthContext"
+import { useRouter } from "expo-router"
+import { Ionicons } from "@expo/vector-icons"
 
 export default function SignUpScreen() {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
     const [role, setRole] = useState("student")
+    const [mobileNumber, setMobileNumber] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const [showPasswords, setShowPasswords] = useState(false)
+
+    const { signUp } = useContext(AuthContext)
+    const router = useRouter()
+
+    const handleSignUp = async () => {
+        if (password !== confirmPassword) {
+            Alert.alert("Password Mismatch", "Passwords do not match")
+            return
+        }
+
+        try {
+            await signUp({
+                name,
+                email,
+                role,
+                language_pref: "english",
+                mobileNumber,
+                password,
+            })
+            Alert.alert("Sign-up successful")
+            router.push("/auth/signin")
+        } catch (err) {
+            Alert.alert("Signup Failed", err.message)
+            console.log(err.message)
+        }
+    }
 
     return (
         <LinearGradient
             colors={["#DE7017", "#EAAC72"]}
-            start={{x: 0.1, y: 0}}
-            end={{x: 1, y: 0.9}}
+            start={{ x: 0.1, y: 0 }}
+            end={{ x: 1, y: 0.9 }}
             style={styles.container}
         >
-            {/* Card */}
-            <View style={styles.card}>
-                {/* Title */}
-                <Text style={styles.title}>Welcome</Text>
-                <Text style={styles.subtitle}>Sign up to join</Text>
+            <KeyboardAvoidingView
+                style={{ flex: 1 }}
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+            >
+                <ScrollView
+                    contentContainerStyle={styles.scrollContent}
+                    keyboardShouldPersistTaps="handled"
+                >
+                    <View style={styles.card}>
+                        <Text style={styles.title}>Create Account</Text>
 
-                {/* Input Fields */}
-                <TextInput placeholder="name" style={styles.input}/>
-                <TextInput placeholder="email" style={styles.input}/>
+                        <TextInput
+                            placeholder="Name"
+                            value={name}
+                            onChangeText={setName}
+                            style={styles.input}
+                        />
+                        <TextInput
+                            placeholder="Email"
+                            value={email}
+                            onChangeText={setEmail}
+                            style={styles.input}
+                        />
+                        <TextInput
+                            placeholder="Mobile Number"
+                            value={mobileNumber}
+                            onChangeText={setMobileNumber}
+                            style={styles.input}
+                        />
 
-                {/* Dropdown (Picker) */}
-                <View style={styles.pickerWrapper}>
-                    <Picker
-                        selectedValue={role}
-                        onValueChange={(itemValue) => setRole(itemValue)}
-                        style={styles.picker}
-                    >
-                        <Picker.Item label="student" value="student"/>
-                        <Picker.Item label="teacher" value="teacher"/>
-                    </Picker>
-                </View>
+                        {/* Role Picker */}
+                        <View style={styles.pickerWrapper}>
+                            <Picker
+                                selectedValue={role}
+                                onValueChange={(itemValue) => setRole(itemValue)}
+                                style={styles.picker}
+                            >
+                                <Picker.Item label="Student" value="student" />
+                                <Picker.Item label="Teacher" value="teacher" />
+                            </Picker>
+                        </View>
 
-                <TextInput
-                    placeholder="password"
-                    secureTextEntry
-                    style={styles.input}
-                />
-                <TextInput
-                    placeholder="confirm password"
-                    secureTextEntry
-                    style={styles.input}
-                />
+                        {/* Password Field */}
+                        <View style={styles.passwordWrapper}>
+                            <TextInput
+                                placeholder="Password"
+                                secureTextEntry={!showPasswords}
+                                value={password}
+                                onChangeText={setPassword}
+                                style={styles.passwordInput}
+                            />
+                            <TouchableOpacity
+                                onPress={() => setShowPasswords(prev => !prev)}
+                                style={styles.eyeIcon}
+                            >
+                                <Ionicons
+                                    name={showPasswords ? "eye-off" : "eye"}
+                                    size={20}
+                                    color="#333"
+                                />
+                            </TouchableOpacity>
+                        </View>
 
-                {/* Already have an account */}
-                <Text style={styles.footerText}>
-                    Have an account ?{" "}
-                    <TouchableOpacity>
-                        <Text style={styles.linkText}>Sign In</Text>
-                    </TouchableOpacity>
-                </Text>
+                        {/* Confirm Password Field */}
+                        <View style={styles.passwordWrapper}>
+                            <TextInput
+                                placeholder="Confirm Password"
+                                secureTextEntry={!showPasswords}
+                                value={confirmPassword}
+                                onChangeText={setConfirmPassword}
+                                style={styles.passwordInput}
+                            />
+                            <TouchableOpacity
+                                onPress={() => setShowPasswords(prev => !prev)}
+                                style={styles.eyeIcon}
+                            >
+                                <Ionicons
+                                    name={showPasswords ? "eye-off" : "eye"}
+                                    size={20}
+                                    color="#333"
+                                />
+                            </TouchableOpacity>
+                        </View>
 
-                {/* Sign Up Button */}
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Sign Up</Text>
-                </TouchableOpacity>
-            </View>
+                        {/* Sign In Navigation */}
+                        <TouchableOpacity
+                            onPress={() => router.push("/auth/signin")}
+                            style={styles.signInLink}
+                        >
+                            <Text style={styles.signInText}>
+                                Already have an account?{" "}
+                                <Text style={{ fontWeight: "600", color: "blue" }}>
+                                    Sign In
+                                </Text>
+                            </Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={handleSignUp} style={styles.button}>
+                            <Text style={styles.buttonText}>Sign Up</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView>
+            </KeyboardAvoidingView>
         </LinearGradient>
     )
 }
@@ -72,24 +168,24 @@ export default function SignUpScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#E97721",
+    },
+    scrollContent: {
+        flexGrow: 1,
         justifyContent: "center",
+        padding: 20,
     },
     card: {
         backgroundColor: "#fff",
-        margin: 20,
         borderRadius: 12,
         padding: 20,
+        marginBottom: 15,
     },
     title: {
         fontSize: 26,
         fontWeight: "600",
         color: "#000",
-    },
-    subtitle: {
-        fontSize: 14,
-        color: "#555",
-        marginBottom: 25,
+        marginBottom: 20,
+        textAlign: "center",
     },
     input: {
         borderWidth: 1,
@@ -110,25 +206,41 @@ const styles = StyleSheet.create({
         height: 50,
         width: "100%",
     },
-    footerText: {
-        textAlign: "center",
-        fontSize: 14,
-        color: "#444",
+    passwordWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#bbb",
+        borderRadius: 20,
+        paddingHorizontal: 12,
         marginBottom: 15,
     },
-    linkText: {
-        color: "blue",
-        fontWeight: "500",
+    passwordInput: {
+        flex: 1,
+        paddingVertical: 12,
+        fontSize: 16,
+    },
+    eyeIcon: {
+        marginLeft: 10,
     },
     button: {
         backgroundColor: "#000",
         padding: 15,
         borderRadius: 20,
         alignItems: "center",
+        marginTop: 10,
     },
     buttonText: {
         color: "#fff",
         fontSize: 16,
         fontWeight: "500",
+    },
+    signInLink: {
+        alignItems: "center",
+        marginTop: 10,
+    },
+    signInText: {
+        color: "#000",
+        fontSize: 14,
     },
 })
