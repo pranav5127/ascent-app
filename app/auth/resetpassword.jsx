@@ -1,10 +1,16 @@
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import { Ionicons } from "@expo/vector-icons"; // for back arrow
+import { Ionicons } from "@expo/vector-icons";
+import {LinearGradient} from "expo-linear-gradient"; // for back arrow
 
 export default function ResetPasswordScreen() {
   return (
-    <View style={styles.container}>
+      <LinearGradient
+          colors={["#DE7017", "#EAAC72"]}
+          start={{ x: 0.1, y: 0 }}
+          end={{ x: 1, y: 0.9 }}
+          style={styles.container}
+      >
       {/* Top Back Button */}
       <View style={styles.header}>
         <Ionicons name="arrow-back" size={24} color="black" />
@@ -26,7 +32,7 @@ export default function ResetPasswordScreen() {
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
       </View>
-    </View>
+      </LinearGradient>
   );
 }
 
@@ -66,7 +72,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: "auto", // pushes button to bottom
+    marginTop: "auto",
   },
   buttonText: {
     color: "#fff",
