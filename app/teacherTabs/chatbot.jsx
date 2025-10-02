@@ -54,7 +54,7 @@ export default function ChatScreen() {
             <KeyboardAvoidingView
                 style={styles.flex}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                keyboardVerticalOffset={tabBarHeight + 10}
+                keyboardVerticalOffset={tabBarHeight + 60}
             >
                 <View style={styles.container}>
                     <FlatList
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F6E9E2',
     },
-    chatContainer: {padding: 10, flexGrow: 1, marginBottom: 30},
+    chatContainer: {padding: 10, flexGrow: 1, marginBottom: 40},
     inputWrapper: {
         flexDirection: 'row',
         alignItems: 'center',

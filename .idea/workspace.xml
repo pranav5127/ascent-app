@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="setup rbac in app ui">
-      <change afterPath="$PROJECT_DIR$/app/studentScreens/joinclass.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/content.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentScreens/content.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/joinclass.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/studentreport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentScreens/studentreport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/subject.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentScreens/subject.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/signin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/signin.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/signup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/resetpassword.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/resetpassword.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentScreens/subject.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/subject.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/studentTabs/chatbot.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/chatbot.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/teacherTabs/chatbot.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/chatbot.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/teacherTabs/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/teachersScreen/homeScreen.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/teachersScreen/performanceScreen,jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/performanceScreen.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,11 +89,11 @@
       <recent name="$PROJECT_DIR$/assets/images/" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/studentTabs" />
       <recent name="$PROJECT_DIR$/app/studentScreens" />
       <recent name="$PROJECT_DIR$/app/teacherTabs" />
       <recent name="$PROJECT_DIR$/app/screens" />
       <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/app/(tabs)" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -151,7 +149,7 @@
       <workItem from="1759347829316" duration="270000" />
       <workItem from="1759384578665" duration="979000" />
       <workItem from="1759385794044" duration="1151000" />
-      <workItem from="1759388908139" duration="9695000" />
+      <workItem from="1759388908139" duration="12242000" />
     </task>
     <task id="LOCAL-00001" summary="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh">
       <option name="closed" value="true" />
@@ -194,7 +192,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="dev/Komal" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>
