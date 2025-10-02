@@ -1,0 +1,217 @@
+import React from 'react';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
+const chartSize = width * 0.45;
+
+const StatCard = ({ title, value }) => (
+  <View style={styles.statCard}>
+    <Text style={styles.statTitle}>{title}</Text>
+    <Text style={styles.statValue}>{value}</Text>
+  </View>
+);
+
+const Bar = ({ label, percent, value }) => {
+  const barHeight = 120;
+  const height = (percent / 100) * barHeight;
+
+  return (
+    <View style={styles.barContainer}>
+      <Text style={styles.barValue}>{value}</Text>
+      <View style={[styles.bar, { height: height }]}>
+        <View style={styles.barTop} />
+      </View>
+      <Text style={styles.barLabel}>{label}</Text>
+    </View>
+  );
+};
+
+const CircleProgress = ({ percent }) => {
+  const outerRing = chartSize / 2;
+  const innerRing = outerRing - 18;
+
+  return (
+    <View style={styles.circleContainer}>
+      <View style={[styles.outerCircle, { width: outerRing, height: outerRing, borderRadius: outerRing / 2 }]}>
+        <View style={[styles.innerCircle, { width: innerRing, height: innerRing, borderRadius: innerRing / 2 }]} />
+        <Text style={styles.scoreText}>{percent}%</Text>
+      </View>
+    </View>
+  );
+};
+
+
+const PerformanceScreen = () => {
+  const data = {
+    class: '10',
+    overallPercent: 84.6,
+    attendance: 90.8,
+    subjects: [
+      { name: 'Mathem:', percent: 85, value: '85%' },
+      { name: 'Science', percent: 78, value: '78%' },
+      { name: 'English', percent: 92, value: '92%' },
+      { name: 'Social Studies', percent: 80, value: '80%' },
+      { name: 'Hindi', percent: 88, value: '88%' },
+    ]
+  };
+
+  return (
+    <View style={styles.container}>
+      
+      <View style={styles.card}>
+        <Text style={styles.mainTitle}>Overall Performance</Text>
+        <Text style={styles.subtitle}>Class: {data.class}</Text>
+
+        <View style={styles.statsRow}>
+          <StatCard title="Attendance" value={${data.attendance}%} />
+          <StatCard title="Overall marks" value={${data.overallPercent}%} />
+        </View>
+        
+        <View style={styles.chartArea}>
+          <CircleProgress percent={data.overallPercent} />
+          <Text style={styles.subjectTitle}>Subject-wise Performance</Text>
+          
+          <View style={styles.barChart}>
+            {data.subjects.map(sub => (
+              <Bar 
+                key={sub.name} 
+                label={sub.name} 
+                percent={sub.percent} 
+                value={sub.value} 
+              />
+            ))}
+          </View>
+        </View>
+
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F7F7F7',
+    paddingHorizontal: 20,
+    paddingTop: 16,
+  },
+  
+  card: {
+    backgroundColor: '#FFFFFF', 
+    borderRadius: 16, 
+    padding: 24,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  
+  mainTitle: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#333333',
+    marginBottom: 4,
+  },
+  subtitle: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#666666',
+    marginBottom: 20,
+  },
+
+  statsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 30,
+  },
+  statCard: {
+    flex: 1,
+    backgroundColor: '#FDF7F5', 
+    borderRadius: 12,
+    padding: 16,
+    alignItems: 'center',
+    marginHorizontal: 4,
+  },
+  statTitle: {
+    fontSize: 14,
+    color: '#777777',
+    marginBottom: 4,
+  },
+  statValue: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#333333',
+  },
+
+  chartArea: {
+    alignItems: 'center',
+  },
+  circleContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 30,
+  },
+  outerCircle: {
+    backgroundColor: 'rgba(239, 137, 68, 0.2)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  innerCircle: {
+    backgroundColor: '#FFFFFF', 
+    position: 'absolute',
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+  },
+  scoreText: {
+    position: 'absolute',
+    fontSize: 28,
+    fontWeight: '700',
+    color: '#333333',
+  },
+  subjectTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#333333',
+    marginBottom: 20,
+  },
+
+  barChart: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'flex-end',
+    width: '100%',
+    paddingHorizontal: 10,
+  },
+  barContainer: {
+    alignItems: 'center',
+    width: 50,
+  },
+  barValue: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#666666',
+    marginBottom: 4,
+  },
+  bar: {
+    width: 20,
+    backgroundColor: '#EF8944',
+    borderRadius: 4,
+    overflow: 'hidden',
+    justifyContent: 'flex-end',
+  },
+  barTop: {
+    width: '100%',
+    height: 4,
+    backgroundColor: '#F3A867',
+  },
+  barLabel: {
+    marginTop: 8,
+    fontSize: 11,
+    color: '#666666',
+    textAlign: 'center',
+    flexWrap: 'wrap',
+  },
+});
+
+export default PerformanceScreen;
