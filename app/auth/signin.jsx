@@ -55,7 +55,10 @@ export default function SignInScreen() {
                     placeholder="email"
                     placeholderTextColor="#aaa"
                     value={email}
+                    autoCapitalize="none"
+                    autoCorrect={false}
                     onChangeText={setEmail}
+                    textContentType="emailAddress"
                 />
 
                 {/* Password Input with Toggle */}
@@ -64,8 +67,11 @@ export default function SignInScreen() {
                         style={styles.passwordInput}
                         placeholder="password"
                         placeholderTextColor="#aaa"
+                        autoCapitalize="none"
+                        autoCorrect={false}
                         secureTextEntry={!showPassword}
                         value={password}
+                        textContentType="password"
                         onChangeText={setPassword}
                     />
                     <TouchableOpacity

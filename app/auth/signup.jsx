@@ -74,18 +74,21 @@ export default function SignUpScreen() {
                             value={name}
                             onChangeText={setName}
                             style={styles.input}
+                            placeholderTextColor="#aaa"
                         />
                         <TextInput
                             placeholder="Email"
                             value={email}
                             onChangeText={setEmail}
                             style={styles.input}
+                            placeholderTextColor="#aaa"
                         />
                         <TextInput
                             placeholder="Mobile Number"
                             value={mobileNumber}
                             onChangeText={setMobileNumber}
                             style={styles.input}
+                            placeholderTextColor="#aaa"
                         />
 
                         {/* Role Picker */}
@@ -108,6 +111,7 @@ export default function SignUpScreen() {
                                 value={password}
                                 onChangeText={setPassword}
                                 style={styles.passwordInput}
+                                placeholderTextColor="#aaa"
                             />
                             <TouchableOpacity
                                 onPress={() => setShowPasswords(prev => !prev)}
@@ -129,6 +133,7 @@ export default function SignUpScreen() {
                                 value={confirmPassword}
                                 onChangeText={setConfirmPassword}
                                 style={styles.passwordInput}
+                                placeholderTextColor="#aaa"
                             />
                             <TouchableOpacity
                                 onPress={() => setShowPasswords(prev => !prev)}
@@ -205,6 +210,8 @@ const styles = StyleSheet.create({
     picker: {
         height: 50,
         width: "100%",
+        color: "#222"
+
     },
     passwordWrapper: {
         flexDirection: "row",

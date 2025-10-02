@@ -20,17 +20,6 @@ export default function SharedContentScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Shared Content</Text>
-        <Image
-          source={{
-            uri: "https://cdn-icons-png.flaticon.com/512/4140/4140048.png",
-          }}
-          style={styles.avatar}
-        />
-      </View>
-
       {/* Subject Title */}
       <Text style={styles.subjectTitle}>English</Text>
 

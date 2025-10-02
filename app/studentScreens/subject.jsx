@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from "react-native";
 
 const subjects = [
-  { id: "1", name: "Math" },
+  { id: "1", name: "Maths" },
   { id: "2", name: "English" },
   { id: "3", name: "Science" },
 ];
@@ -20,16 +20,7 @@ export default function SubjectsScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Subject</Text>
-        <Image
-          source={{
-            uri: "https://cdn-icons-png.flaticon.com/512/4140/4140048.png",
-          }}
-          style={styles.avatar}
-        />
-      </View>
+
 
       {/* Join Class Button */}
       <TouchableOpacity style={styles.joinButton}>
@@ -50,7 +41,7 @@ export default function SubjectsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5efed",
+    backgroundColor: "#ffffff",
     padding: 16,
   },
   header: {
