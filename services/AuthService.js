@@ -43,19 +43,22 @@ export const AuthService = {
         await AsyncStorage.setItem("userId", user_id)
         return {token: access_token, userId: user_id}
     },
-
     getUserProfile: async (userId) => {
-        const token = await AsyncStorage.getItem("userToken")
-        const response = await fetch(`${BASE_URL}/users/${userId}`, {
-            headers: {Authorization: `Bearer ${token}`}
-        })
-        if (!response.ok) {
-            const errorData = await parseResponse(response)
-            throw new Error(errorData.message || "Failed to fetch profile")
-        }
-        return await parseResponse(response)
-    },
+        try {
+            const res = await fetch(`${BASE_URL}/users/${userId}`)
 
+            if (!res.ok) {
+                throw new Error(`Failed to fetch user profile: ${res.status}`)
+            }
+
+            const data = await res.json()
+            console.log("User profile:", data)
+            return data
+        } catch (err) {
+            console.error("getUserProfile error:", err)
+            throw err
+        }
+    },
     logout: async () => {
         await AsyncStorage.multiRemove(["userToken", "userId", "userProfile"])
     },

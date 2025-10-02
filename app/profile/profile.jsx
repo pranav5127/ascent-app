@@ -55,6 +55,13 @@ export default function Profile() {
             </View>
 
             <View style={styles.infoRow}>
+                <Text style={styles.label}>{i18n.t("profile.role")}</Text>
+                <Text style={styles.value}>{userProfile.role}</Text>
+            </View>
+
+
+
+            <View style={styles.infoRow}>
                 <Text style={styles.label}>{i18n.t("profile.email")}</Text>
                 <Text style={styles.value}>{userProfile.email}</Text>
             </View>

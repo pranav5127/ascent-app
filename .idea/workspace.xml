@@ -4,18 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/context/AuthContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/AuthService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="setup auth in app ui">
+      <change afterPath="$PROJECT_DIR$/app/index.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/teacherTabs/_layout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/teacherTabs/chatbot.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/teacherTabs/home.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eas.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/_layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/attendance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/attendance.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/chatbot.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/chatbot.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/class.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/class.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/signin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/signin.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/signup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/profile/profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/context/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/context/AuthContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locales/hi.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/hi.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/AuthService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +34,8 @@
       <list>
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
-        <option value="JSX File" />
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -71,7 +78,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/pranav/Projects/WebstormProjects/ascent-app/ascent-app/assets/images&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/pranav/Projects/WebstormProjects/ascent-app/ascent-app/app/(studentTabs)&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -87,12 +94,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/(studentTabs)" />
+      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/assets/images/" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/auth" />
-      <recent name="$PROJECT_DIR$/app/(tabs)" />
       <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/(tabs)" />
+      <recent name="$PROJECT_DIR$/app/auth" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/profile" />
     </key>
@@ -147,6 +156,9 @@
       <workItem from="1759248512836" duration="379000" />
       <workItem from="1759300320828" duration="1640000" />
       <workItem from="1759312486647" duration="1142000" />
+      <workItem from="1759347829316" duration="270000" />
+      <workItem from="1759384578665" duration="979000" />
+      <workItem from="1759385794044" duration="718000" />
     </task>
     <task id="LOCAL-00001" summary="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh">
       <option name="closed" value="true" />
@@ -156,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758281120127</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="setup auth in app ui">
+      <option name="closed" value="true" />
+      <created>1759331011676</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1759331011676</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +207,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh" />
-    <option name="LAST_COMMIT_MESSAGE" value="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh" />
+    <MESSAGE value="setup auth in app ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="setup auth in app ui" />
   </component>
 </project>

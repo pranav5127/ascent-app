@@ -1,39 +1,44 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
-import { Stack } from "expo-router";
-import { useColorScheme } from "@/hooks/use-color-scheme";
-import "react-native-reanimated";
-import { AuthContext, AuthProvider } from "@/context/AuthContext";
-import { useContext } from "react";
+import { Slot } from "expo-router"
+import { AuthProvider, AuthContext } from "@/context/AuthContext"
+import { useContext } from "react"
+import { ActivityIndicator, View } from "react-native"
+import { ThemeProvider, DarkTheme, DefaultTheme } from "@react-navigation/native"
+import { useColorScheme } from "@/hooks/use-color-scheme"
 
 export default function RootLayout() {
-    const colorScheme = useColorScheme();
+    const colorScheme = useColorScheme()
 
     return (
         <AuthProvider>
             <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-                <AuthStack />
+                <AuthGate />
             </ThemeProvider>
         </AuthProvider>
-    );
+    )
 }
 
-function AuthStack() {
-    const { userToken, loading } = useContext(AuthContext);
+function AuthGate() {
+    const { userToken, userProfile, loading } = useContext(AuthContext)
 
-    if (loading) return null
-
-    if (userToken) {
+    if (loading) {
         return (
-            <Stack screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            </Stack>
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+                <ActivityIndicator size="large" />
+            </View>
         )
     }
 
-    return (
-        <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="auth/signin" />
-            <Stack.Screen name="auth/signup" />
-        </Stack>
-    );
+    if (!userToken) {
+        return <Slot name="auth" />
+    }
+
+    if (userProfile?.role === "student") {
+        return <Slot name="studentTabs" />
+    }
+
+    if (userProfile?.role === "teacher") {
+        return <Slot name="teacherTabs" />
+    }
+
+    return <Slot name="auth" />
 }

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, {useState, useContext} from "react"
 import {
     StyleSheet,
     Text,
@@ -7,36 +7,42 @@ import {
     TouchableOpacity,
     Alert,
 } from "react-native"
-import { LinearGradient } from "expo-linear-gradient"
-import { AuthContext } from "@/context/AuthContext"
-import { useRouter } from "expo-router"
-import { Ionicons } from "@expo/vector-icons"
+import {LinearGradient} from "expo-linear-gradient"
+import {AuthContext} from "@/context/AuthContext"
+import {useRouter} from "expo-router"
+import {Ionicons} from "@expo/vector-icons"
 
 export default function SignInScreen() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
 
-    const { signIn } = useContext(AuthContext)
+    const {signIn} = useContext(AuthContext)
     const router = useRouter()
 
     const handleSignIn = async () => {
         try {
-            console.log("Trying to sign in with:", email, password)
-            await signIn(email, password)
-            console.log("Sign in successful")
-            router.replace("/(tabs)/home")
+            const profile = await signIn(email, password)
+            console.log("Sign in successful:", profile)
+
+            if (profile.role === "teacher") {
+                router.push("/teacherTabs/home")
+            } else {
+                router.push("/studentTabs/home")
+            }
         } catch (err) {
             console.error("Sign in failed:", err)
             Alert.alert("Login Failed", err.message)
         }
     }
 
+
+
     return (
         <LinearGradient
             colors={["#DE7017", "#EAAC72"]}
-            start={{ x: 0.1, y: 0 }}
-            end={{ x: 1, y: 0.9 }}
+            start={{x: 0.1, y: 0}}
+            end={{x: 1, y: 0.9}}
             style={styles.container}
         >
             <View style={styles.card}>

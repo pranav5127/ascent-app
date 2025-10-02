@@ -4,7 +4,7 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import {Ionicons} from "@expo/vector-icons";
 import {Pressable} from "react-native";
 
-export default function TabsLayout() {
+export default function StudentTabsLayout() {
     const router = useRouter()
 
     return (
@@ -45,16 +45,7 @@ export default function TabsLayout() {
                         ),
                     }}
                 />
-                <Tabs.Screen
-                    name="class"
-                    options={{
-                        title: "Class",
-                        tabBarLabel: "Class",
-                        tabBarIcon: ({color, size}) => (
-                            <MaterialIcons name="class" size={size} color={color}/>
-                        ),
-                    }}
-                />
+
                 <Tabs.Screen
                     name="chatbot"
                     options={{
@@ -62,16 +53,6 @@ export default function TabsLayout() {
                         tabBarLabel: "Ask Ascent",
                         tabBarIcon: ({color, size}) => (
                             <MaterialIcons name="chat" size={size} color={color}/>
-                        ),
-                    }}
-                />
-                <Tabs.Screen
-                    name="attendance"
-                    options={{
-                        title: "Attendance",
-                        tabBarLabel: "Attendance",
-                        tabBarIcon: ({color, size}) => (
-                            <MaterialIcons name="event" size={size} color={color}/>
                         ),
                     }}
                 />
