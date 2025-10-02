@@ -1,25 +1,42 @@
 import React, { useEffect, useState, useContext } from "react"
-import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from "react-native"
+import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList, ActivityIndicator } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 import { AuthContext } from "@/context/AuthContext"
-import {getClassService} from "@/services/getClassService";
+import { getClassService } from "@/services/getClassService"
+import {useRouter} from "expo-router";
 
 export default function ClassesScreen() {
     const { userProfile } = useContext(AuthContext)
     const [classes, setClasses] = useState([])
+    const [loading, setLoading] = useState(true)
+    const router = useRouter()
 
     useEffect(() => {
         const fetchClasses = async () => {
-            if (userProfile?.id) {
-                const teacherClasses = await getClassService.getClassesByTeacher(userProfile.id)
-                setClasses(teacherClasses)
+            try {
+                if (userProfile?.id) {
+                    const teacherClasses = await getClassService.getClassesByTeacher(userProfile.id)
+                    setClasses(teacherClasses)
+                }
+            } catch (err) {
+                console.error("Failed to load classes:", err)
+            } finally {
+                setLoading(false)
             }
         }
         fetchClasses()
     }, [userProfile])
 
     const renderClassCard = ({ item }) => (
-        <View style={styles.classCard}>
+        <TouchableOpacity
+            style={styles.classCard}
+            onPress={() =>
+                router.push({
+                    pathname: "/teachersScreen/examScreen",
+                    params: { classId: item.id },
+                })
+            }
+        >
             <Image
                 source={{ uri: "https://images.pexels.com/photos/289737/pexels-photo-289737.jpeg" }}
                 style={styles.classImage}
@@ -30,17 +47,26 @@ export default function ClassesScreen() {
             />
             <View style={styles.classInfo}>
                 <Text style={styles.classTitle}>{item.name}</Text>
-
             </View>
             <TouchableOpacity style={styles.performanceButton}>
                 <Text style={styles.performanceText}>class performance</Text>
             </TouchableOpacity>
-        </View>
-    )
+        </TouchableOpacity>
+    );
+
+
+    if (loading) {
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" color="#333" />
+                <Text style={styles.loadingText}>Loading your classes...</Text>
+            </View>
+        )
+    }
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.createButton}>
+            <TouchableOpacity style={styles.createButton} onPress={() => router.push("/teachersScreen/createClass")}>
                 <Text style={styles.createButtonText}>Create Class</Text>
             </TouchableOpacity>
             <Text style={styles.sectionTitle}>Your Classes</Text>
@@ -49,6 +75,7 @@ export default function ClassesScreen() {
                 keyExtractor={(item) => item.id}
                 renderItem={renderClassCard}
                 contentContainerStyle={{ paddingBottom: 20 }}
+                ListEmptyComponent={<Text style={{ textAlign: "center", marginTop: 20 }}>No classes found</Text>}
             />
         </View>
     )
@@ -59,6 +86,17 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#f5efed",
         padding: 16,
+    },
+    loadingContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f5efed",
+    },
+    loadingText: {
+        marginTop: 10,
+        fontSize: 16,
+        color: "#666",
     },
     createButton: {
         backgroundColor: "#333",

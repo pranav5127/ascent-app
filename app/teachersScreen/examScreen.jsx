@@ -1,114 +1,164 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React, { useEffect, useState } from "react";
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    Image,
+    Alert,
+    ActivityIndicator,
+    ScrollView
+} from "react-native";
+import { useLocalSearchParams } from "expo-router";
+import { getExamService } from "@/services/getExamService";
 
-// Helper component for exam cards
-const ExamCard = ({ title, dates, imageUrl }) => (
-  <TouchableOpacity style={styles.card} activeOpacity={0.9}>
-    <Image 
-      source={{ uri: imageUrl }} 
-      style={styles.cardImage} 
-      resizeMode="cover" 
-    />
-    <View style={styles.cardOverlay}>
-      <Text style={styles.cardTitle}>{title}</Text>
-      <Text style={styles.cardDates}>{dates}</Text>
-    </View>
-  </TouchableOpacity>
+const ExamCard = ({ title, dates }) => (
+    <TouchableOpacity style={styles.card} activeOpacity={0.9}>
+        <Image
+            source={{ uri: "https://images.pexels.com/photos/289737/pexels-photo-289737.jpeg" }}
+            style={styles.cardImage}
+            resizeMode="cover"
+        />
+        <View style={styles.cardOverlay}>
+            <Text style={styles.cardTitle}>{title}</Text>
+            <Text style={styles.cardDates}>{dates}</Text>
+        </View>
+    </TouchableOpacity>
 );
 
 const ExamScreen = () => {
-  // Mock data for the exam list
-  const exams = [
-    { id: '1', title: 'Mid sem', dates: '26 sep - 30 sep', img: 'https://placehold.co/400x150/F5E6E0/333333?text=Books' },
-    { id: '2', title: 'Unit test', dates: '1 sep- 4 sep', img: 'https://placehold.co/400x150/F5E6E0/333333?text=Books' },
-    { id: '3', title: 'Pre boards', dates: '15 jan - 20 jan', img: 'https://placehold.co/400x150/F5E6E0/333333?text=Books' },
-  ];
+    const { classId } = useLocalSearchParams();
+    const [exam, setExam] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-  const handleCreate = () => console.log('Create Exam tapped');
+    const handleCreate = () => console.log("handle create clicked");
 
-  return (
-    <View style={styles.container}>
-      
-      {/* Create Exam Button */}
-      <TouchableOpacity style={styles.createBtn} onPress={handleCreate} activeOpacity={0.8}>
-        <Text style={styles.createBtnText}>create exam</Text>
-      </TouchableOpacity>
+    useEffect(() => {
+        const fetchExams = async () => {
+            try {
+                if (!classId) {
+                    Alert.alert("Class id not found");
+                    return;
+                }
+                const examList = await getExamService.getExamByClass(classId);
+                setExam(examList);
+            } catch (err) {
+                Alert.alert("Failed to fetch exams", err.message || String(err));
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchExams();
+    }, [classId]);
 
-      {/* Exam List */}
-      {exams.map(exam => (
-        <ExamCard 
-          key={exam.id}
-          title={exam.title}
-          dates={exam.dates}
-          imageUrl={exam.img}
-        />
-      ))}
-      
-    </View>
-  );
+    if (loading) {
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" color="#404040" />
+                <Text style={styles.loadingText}>Loading exams...</Text>
+            </View>
+        );
+    }
+
+    return (
+        <View style={styles.container}>
+            {/* Create Exam Button */}
+            <TouchableOpacity style={styles.createBtn} onPress={handleCreate} activeOpacity={0.8}>
+                <Text style={styles.createBtnText}>create exam</Text>
+            </TouchableOpacity>
+
+            {/* Exam List */}
+            <ScrollView>
+                {exam.length > 0 ? (
+                    exam.map(exam => (
+                        <ExamCard
+                            key={exam.class_id}
+                            title={exam.name}
+                            dates={exam.date}
+                        />
+                    ))
+                ) : (
+                    <Text style={styles.emptyText}>No exams available</Text>
+                )}
+            </ScrollView>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F7F7F7', 
-    paddingHorizontal: 20,
-    paddingTop: 16,
-  },
-  
-  // Create Exam Button
-  createBtn: {
-    backgroundColor: '#404040',
-    paddingVertical: 16,
-    borderRadius: 12,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 5,
-    elevation: 5,
-    marginBottom: 20,
-    marginTop: 10,
-  },
-  createBtnText: {
-    color: '#FFFFFF',
-    fontSize: 18,
-    fontWeight: '600',
-    textAlign: 'center',
-    textTransform: 'lowercase',
-  },
-
-  // Exam Card Styles
-  card: {
-    height: 180,
-    borderRadius: 12,
-    marginBottom: 20,
-    overflow: 'hidden',
-    backgroundColor: '#FFFFFF',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.15,
-    shadowRadius: 5,
-    elevation: 3,
-  },
-  cardImage: {
-    height: 120, // Image occupies the top part
-  },
-  cardOverlay: {
-    flex: 1,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    backgroundColor: '#FFFFFF', // White background for text area
-  },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#333333',
-  },
-  cardDates: {
-    fontSize: 14,
-    fontWeight: '400',
-    color: '#777777',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#F7F7F7",
+        paddingHorizontal: 20,
+        paddingTop: 16,
+    },
+    loadingContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#F7F7F7",
+    },
+    loadingText: {
+        marginTop: 10,
+        fontSize: 16,
+        color: "#666",
+    },
+    createBtn: {
+        backgroundColor: "#404040",
+        paddingVertical: 16,
+        borderRadius: 12,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.15,
+        shadowRadius: 5,
+        elevation: 5,
+        marginBottom: 20,
+        marginTop: 10,
+    },
+    createBtnText: {
+        color: "#FFFFFF",
+        fontSize: 18,
+        fontWeight: "600",
+        textAlign: "center",
+        textTransform: "lowercase",
+    },
+    card: {
+        height: 180,
+        borderRadius: 12,
+        marginBottom: 20,
+        overflow: "hidden",
+        backgroundColor: "#FFFFFF",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.15,
+        shadowRadius: 5,
+        elevation: 3,
+    },
+    cardImage: {
+        height: 120,
+    },
+    cardOverlay: {
+        flex: 1,
+        paddingHorizontal: 16,
+        paddingVertical: 10,
+        backgroundColor: "#FFFFFF",
+    },
+    cardTitle: {
+        fontSize: 18,
+        fontWeight: "700",
+        color: "#333333",
+    },
+    cardDates: {
+        fontSize: 14,
+        fontWeight: "400",
+        color: "#777777",
+    },
+    emptyText: {
+        textAlign: "center",
+        color: "#777",
+        fontSize: 16,
+        marginTop: 20,
+    },
 });
 
 export default ExamScreen;

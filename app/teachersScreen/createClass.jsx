@@ -34,7 +34,6 @@ function CreateClass() {
         Alert.alert("Copied!", "Class code copied to clipboard")
     }
 
-
     const handleSubmit = async () => {
         if (!className.trim()) return Alert.alert("Error", "Please enter class name")
         if (!userProfile?.id) return Alert.alert("Error", "Teacher not found")

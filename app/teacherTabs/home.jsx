@@ -29,7 +29,7 @@ const HomeScreen = () => {
                     AI Handles the Data, So You Can <Text style={styles.aiCardTextAccent}>Lead the Classroom.</Text>
                 </Text>
 
-                <TouchableOpacity style={styles.exploreButton} activeOpacity={0.7}>
+                <TouchableOpacity style={styles.exploreButton} activeOpacity={0.7} onPress={() => router.push("/teacherTabs/chatbot")}>
                     <Text style={styles.exploreButtonText}>
                         Explore →
                     </Text>
@@ -43,8 +43,7 @@ const HomeScreen = () => {
                 end={{ x: 0, y: 1 }}
                 style={styles.actionArea}
             >
-                <ActionButton title="Create Class" onPress={() => router.push("/teachersScreen/createClass")
-                } />
+                <ActionButton title="Create Class" onPress={() => router.push("/teachersScreen/createClass")} />
                 <ActionButton title="Ask Ascent" onPress={() => router.push("/teacherTabs/chatbot")}/>
                 <ActionButton title="Share Contents" />
             </LinearGradient>
