@@ -9,7 +9,7 @@ import {
     ActivityIndicator,
     ScrollView
 } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import {useLocalSearchParams, useRouter} from "expo-router";
 import { getExamService } from "@/services/getExamService";
 
 const ExamCard = ({ title, dates }) => (
@@ -27,11 +27,15 @@ const ExamCard = ({ title, dates }) => (
 );
 
 const ExamScreen = () => {
+    const router = useRouter()
     const { classId } = useLocalSearchParams();
     const [exam, setExam] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const handleCreate = () => console.log("handle create clicked");
+    const handleCreate = () => router.push({
+        pathname: "/teachersScreen/createExam",
+        params: { classId: classId },
+})
 
     useEffect(() => {
         const fetchExams = async () => {
@@ -72,7 +76,7 @@ const ExamScreen = () => {
                 {exam.length > 0 ? (
                     exam.map(exam => (
                         <ExamCard
-                            key={exam.class_id}
+                            key={exam.name}
                             title={exam.name}
                             dates={exam.date}
                         />

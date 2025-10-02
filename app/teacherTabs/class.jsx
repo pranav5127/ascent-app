@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useContext } from "react"
-import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList, ActivityIndicator } from "react-native"
+import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList, ActivityIndicator, Alert } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 import { AuthContext } from "@/context/AuthContext"
 import { getClassService } from "@/services/getClassService"
-import {useRouter} from "expo-router";
+import { useRouter } from "expo-router"
+import * as Clipboard from "expo-clipboard"
+import { Ionicons } from "@expo/vector-icons"
 
 export default function ClassesScreen() {
     const { userProfile } = useContext(AuthContext)
@@ -27,6 +29,11 @@ export default function ClassesScreen() {
         fetchClasses()
     }, [userProfile])
 
+    const copyClassId = async (classId) => {
+        await Clipboard.setStringAsync(classId)
+        Alert.alert("Copied!", "Class ID copied to clipboard")
+    }
+
     const renderClassCard = ({ item }) => (
         <TouchableOpacity
             style={styles.classCard}
@@ -48,12 +55,16 @@ export default function ClassesScreen() {
             <View style={styles.classInfo}>
                 <Text style={styles.classTitle}>{item.name}</Text>
             </View>
-            <TouchableOpacity style={styles.performanceButton}>
-                <Text style={styles.performanceText}>class performance</Text>
-            </TouchableOpacity>
+            <View style={styles.cardButtons}>
+                <TouchableOpacity style={styles.performanceButton}>
+                    <Text style={styles.performanceText}>Class Performance</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.copyButton} onPress={() => copyClassId(item.id)}>
+                    <Ionicons name="copy-outline" size={20} color="#fff" />
+                </TouchableOpacity>
+            </View>
         </TouchableOpacity>
-    );
-
+    )
 
     if (loading) {
         return (
@@ -143,14 +154,14 @@ const styles = StyleSheet.create({
         fontWeight: "600",
         color: "#fff",
     },
-    classSubtitle: {
-        fontSize: 14,
-        color: "#ddd",
-    },
-    performanceButton: {
+    cardButtons: {
         position: "absolute",
         bottom: 12,
         right: 12,
+        flexDirection: "row",
+        gap: 8,
+    },
+    performanceButton: {
         backgroundColor: "#333",
         paddingHorizontal: 12,
         paddingVertical: 6,
@@ -160,5 +171,13 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 12,
         fontWeight: "500",
+    },
+    copyButton: {
+        backgroundColor: "#555",
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        borderRadius: 8,
+        justifyContent: "center",
+        alignItems: "center",
     },
 })
