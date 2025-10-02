@@ -2,9 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const Icon = ({ color, size, style }) => (
-    <View style={[{ width: size, height: size, backgroundColor: color, borderRadius: 2 }, style]} />
-);
 
 const ActionButton = ({ title }) => (
     <TouchableOpacity
@@ -26,7 +23,6 @@ const HomeScreen = () => {
             </Text>
 
             <View style={styles.aiCard}>
-                <Icon color="#4f46e5" size={24} style={{ marginBottom: 12 }} />
                 <Text style={styles.aiCardText}>
                     AI Handles the Data, So You Can <Text style={styles.aiCardTextAccent}>Lead the Classroom.</Text>
                 </Text>
