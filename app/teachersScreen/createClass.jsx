@@ -6,7 +6,7 @@ import * as Clipboard from "expo-clipboard"
 import { AuthContext } from "@/context/AuthContext"
 import { createClassWithSubjects } from "@/services/classService"
 
-export default function CreateClass() {
+function CreateClass() {
     const { userProfile } = useContext(AuthContext)
     const [classCode, setClassCode] = useState("")
     const [className, setClassName] = useState("")
@@ -102,6 +102,8 @@ export default function CreateClass() {
         </View>
     )
 }
+
+export default CreateClass
 
 const styles = StyleSheet.create({
     container: {

@@ -24,8 +24,9 @@ const HomeScreen = () => {
 
             <View style={styles.aiCard}>
                 <Text style={styles.aiCardText}>
-                    Students are the seeds of tomorrow, <Text style={styles.aiCardTextAccent}>nurture them with knowledge and curiosity.</Text>
+                    AI Handles the Data, So You Can <Text style={styles.aiCardTextAccent}>Lead the Classroom.</Text>
                 </Text>
+
                 <TouchableOpacity style={styles.exploreButton} activeOpacity={0.7}>
                     <Text style={styles.exploreButtonText}>
                         Explore →

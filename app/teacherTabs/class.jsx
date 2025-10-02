@@ -1,52 +1,49 @@
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-
-const classes = [
-    { id: "1", name: "Class 10", students: 10 },
-    { id: "2", name: "Class 9", students: 20 },
-    { id: "3", name: "Class 8", students: 20 },
-];
+import React, { useEffect, useState, useContext } from "react"
+import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from "react-native"
+import { LinearGradient } from "expo-linear-gradient"
+import { AuthContext } from "@/context/AuthContext"
+import {getClassService} from "@/services/getClassService";
 
 export default function ClassesScreen() {
+    const { userProfile } = useContext(AuthContext)
+    const [classes, setClasses] = useState([])
+
+    useEffect(() => {
+        const fetchClasses = async () => {
+            if (userProfile?.id) {
+                const teacherClasses = await getClassService.getClassesByTeacher(userProfile.id)
+                setClasses(teacherClasses)
+            }
+        }
+        fetchClasses()
+    }, [userProfile])
+
     const renderClassCard = ({ item }) => (
         <View style={styles.classCard}>
-            {/* Background Image */}
             <Image
                 source={{ uri: "https://images.pexels.com/photos/289737/pexels-photo-289737.jpeg" }}
                 style={styles.classImage}
             />
-
-            {/* Gradient Overlay */}
             <LinearGradient
                 colors={["transparent", "rgba(0,0,0,0.7)"]}
                 style={styles.gradientOverlay}
             />
-
-            {/* Class Info */}
             <View style={styles.classInfo}>
                 <Text style={styles.classTitle}>{item.name}</Text>
-                <Text style={styles.classSubtitle}>{item.students} students</Text>
-            </View>
 
-            {/* Performance Button */}
+            </View>
             <TouchableOpacity style={styles.performanceButton}>
                 <Text style={styles.performanceText}>class performance</Text>
             </TouchableOpacity>
         </View>
-    );
+    )
 
     return (
         <View style={styles.container}>
-            {/* Create Class Button */}
             <TouchableOpacity style={styles.createButton}>
                 <Text style={styles.createButtonText}>Create Class</Text>
             </TouchableOpacity>
-
-            {/* Title */}
             <Text style={styles.sectionTitle}>Your Classes</Text>
-
-            {/* Class List */}
             <FlatList
                 data={classes}
                 keyExtractor={(item) => item.id}
@@ -54,7 +51,7 @@ export default function ClassesScreen() {
                 contentContainerStyle={{ paddingBottom: 20 }}
             />
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
@@ -126,4 +123,4 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: "500",
     },
-});
+})

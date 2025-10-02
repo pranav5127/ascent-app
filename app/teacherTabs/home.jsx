@@ -1,19 +1,21 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import {useRouter} from "expo-router";
 
-
-const ActionButton = ({ title }) => (
+const ActionButton = ({ title, onPress}) => (
     <TouchableOpacity
         style={styles.actionButton}
         activeOpacity={0.8}
+        onPress={onPress}
     >
         <Text style={styles.actionButtonText}>{title}</Text>
     </TouchableOpacity>
 );
 
 const HomeScreen = () => {
-    const user = "Intern";
+    const user = "User";
+    const router = useRouter()
 
     return (
         <View style={styles.container}>
@@ -41,8 +43,9 @@ const HomeScreen = () => {
                 end={{ x: 0, y: 1 }}
                 style={styles.actionArea}
             >
-                <ActionButton title="Create Class" />
-                <ActionButton title="Ask Ascent" />
+                <ActionButton title="Create Class" onPress={() => router.push("/teachersScreen/createClass")
+                } />
+                <ActionButton title="Ask Ascent" onPress={() => router.push("/teacherTabs/chatbot")}/>
                 <ActionButton title="Share Contents" />
             </LinearGradient>
 
