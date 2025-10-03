@@ -56,6 +56,26 @@ export default function StudentTabsLayout() {
                         ),
                     }}
                 />
+                <Tabs.Screen
+                    name="classes"
+                    options={{
+                        title: "Classes",
+                        tabBarLabel: "Classes",
+                        tabBarIcon: ({color, size}) => (
+                            <MaterialIcons name="library-books" size={size} color={color}/>
+                        ),
+                    }}
+                />
+                <Tabs.Screen
+                    name="viewreport"
+                    options={{
+                        title: "Reports",
+                        tabBarLabel: "Reports",
+                        tabBarIcon: ({color, size}) => (
+                            <MaterialIcons name="card-membership" size={size} color={color}/>
+                        ),
+                    }}
+                />
             </Tabs>
             <StatusBar style="dark"/>
         </>

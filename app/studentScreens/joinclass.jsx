@@ -1,9 +1,32 @@
-import React, {useState} from "react";
-import {View, Text, StyleSheet, TextInput, TouchableOpacity} from "react-native";
+import React, {useContext, useState} from "react";
+import {View, Text, StyleSheet, TextInput, TouchableOpacity, Alert} from "react-native";
 import {LinearGradient} from "expo-linear-gradient";
+import {AuthContext} from "@/context/AuthContext";
+import {joinClassService} from "@/services/joinClassService";
 
 export default function JoinClass() {
     const [classCode, setClassCode] = useState("");
+    const {userProfile} = useContext(AuthContext)
+    const handleJoinClass = async () => {
+        if (!classCode.trim()) {
+            Alert.alert("Please enter a class code");
+            return;
+        }
+
+        try {
+            if (userProfile?.id) {
+                const joinClass = await joinClassService({
+                    class_id: classCode,
+                    student_id: userProfile.id
+                });
+                console.log(joinClass);
+                Alert.alert("Success", "You have joined the class!");
+            }
+        } catch (err) {
+            Alert.alert("Failed to join class", err.message || "Something went wrong");
+        }
+    }
+
 
     return (
         <View style={styles.container}>
@@ -23,7 +46,7 @@ export default function JoinClass() {
                     onChangeText={setClassCode}
                 />
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={handleJoinClass}>
                     <Text style={styles.buttonText}>Join</Text>
                 </TouchableOpacity>
             </LinearGradient>

@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#f3ebe6",
         alignItems: "center",
-        paddingTop: 40
+        paddingTop: 100
     },
     card: {
         borderRadius: 20,

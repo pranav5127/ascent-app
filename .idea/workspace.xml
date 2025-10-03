@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="setup rbac in app ui">
+      <change afterPath="$PROJECT_DIR$/app/studentTabs/classes.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/getStudentClassesService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/joinClassService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/teacherTabs/class.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/class.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentScreens/joinclass.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentScreens/joinclass.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentTabs/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/_layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentTabs/subject.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/teachersScreen/createExam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/createExam.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/teachersScreen/examScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/examScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/examService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/examService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +150,7 @@
       <workItem from="1759347829316" duration="270000" />
       <workItem from="1759384578665" duration="979000" />
       <workItem from="1759385794044" duration="1151000" />
-      <workItem from="1759388908139" duration="24113000" />
+      <workItem from="1759388908139" duration="31199000" />
     </task>
     <task id="LOCAL-00001" summary="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh">
       <option name="closed" value="true" />
