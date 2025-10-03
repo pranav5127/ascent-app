@@ -71,7 +71,6 @@ function CreateExam() {
                         mode="date"
                         display="default"
                         onChange={onChangeDate}
-                        minimumDate={new Date()}
                     />
                 )}
                 <TouchableOpacity style={styles.button} onPress={handleSubmit} disabled={loading}>

@@ -12,8 +12,8 @@ import {
 import {useLocalSearchParams, useRouter} from "expo-router";
 import { getExamService } from "@/services/getExamService";
 
-const ExamCard = ({ title, dates }) => (
-    <TouchableOpacity style={styles.card} activeOpacity={0.9}>
+const ExamCard = ({ title, dates, onPress }) => (
+    <TouchableOpacity style={styles.card} activeOpacity={0.9} onPress={onPress}>
         <Image
             source={{ uri: "https://images.pexels.com/photos/289737/pexels-photo-289737.jpeg" }}
             style={styles.cardImage}
@@ -79,6 +79,13 @@ const ExamScreen = () => {
                             key={exam.name}
                             title={exam.name}
                             dates={exam.date}
+                            onPress={() => router.push({
+                                pathname: "teachersScreen/student",
+                                params: {
+                                    classId: classId,
+                                    examId: exam.id
+                                }
+                            })}
                         />
                     ))
                 ) : (

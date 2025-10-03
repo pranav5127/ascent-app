@@ -85,7 +85,7 @@ function CreateClass() {
                             onChangeText={(text) => updateSubject(text, index)}
                         />
                         <TouchableOpacity onPress={() => removeSubject(index)} style={styles.removeBtn}>
-                            <Ionicons name="close-circle" size={22} color="red" />
+                            <Ionicons name="close-circle" size={22} color="#000" />
                         </TouchableOpacity>
                     </View>
                 ))}

@@ -63,7 +63,7 @@ const PerformanceScreen = () => {
         <Text style={styles.subtitle}>Class: {data.class}</Text>
 
         <View style={styles.statsRow}>
-          <StatCard title="Attendance" value={"1"} />
+          <StatCard title="AttendanceScreen" value={"1"} />
           <StatCard title="Overall marks" value={"2"} />
         </View>
         

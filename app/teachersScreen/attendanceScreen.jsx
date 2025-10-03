@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native"
 import { Ionicons } from "@expo/vector-icons"
 
-function Attendance() {
+function AttendanceScreen() {
   const [attendance, setAttendance] = useState([
     { id: "1", name: "Student 1", present: null },
     { id: "2", name: "Student 2", present: null },
@@ -52,7 +52,7 @@ function Attendance() {
   )
 }
 
-export default Attendance
+export default AttendanceScreen
 
 const styles = StyleSheet.create({
   container: {

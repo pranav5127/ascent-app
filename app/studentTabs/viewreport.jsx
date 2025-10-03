@@ -1,24 +1,70 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
+import React, { useState, useEffect, useContext } from 'react'
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { AuthContext } from '@/context/AuthContext'
 
 export default function StudentReportScreen() {
     const [reports, setReports] = useState([])
-    const [selectedView, setSelectedView] = useState('monthly')
+    const [loading, setLoading] = useState(false)
+    const { userProfile } = useContext(AuthContext)
 
     useEffect(() => {
         fetchReports()
-    }, [selectedView])
+    }, [])
 
     const fetchReports = async () => {
+        try {
+            setLoading(true)
+            const response = await fetch(`https://ascent-backend.onrender.com/reports/student/${userProfile?.id}`, {
+                headers: { Accept: 'application/json' }
+            })
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch reports')
+            }
+
+            const data = await response.json()
+
+            const sortedReports = data.sort(
+                (a, b) => new Date(b.created_at) - new Date(a.created_at)
+            )
+
+            const parsedReports = sortedReports.map(report => {
+                let parsedText = {}
+                try {
+                    parsedText = JSON.parse(report.report_text)
+                } catch {
+                    parsedText = { summary: 'No summary available', detailed_report: '' }
+                }
+
+                return {
+                    id: report.id,
+                    title: report.period,
+                    date: new Date(report.created_at).toLocaleDateString(),
+                    summary: parsedText.summary,
+                    details: parsedText.detailed_report
+                }
+            })
+
+            setReports(parsedReports)
+        } catch (error) {
+            console.error(error)
+            Alert.alert('Error', 'Unable to fetch reports at the moment.')
+        } finally {
+            setLoading(false)
+        }
     }
 
     const renderReportItem = ({ item }) => (
         <View style={styles.reportCard}>
-            <Text style={styles.reportTitle}>{item.title}</Text>
             <Text style={styles.reportDate}>{item.date}</Text>
-            <Text style={styles.reportSummary}>{item.summary}</Text>
-            <TouchableOpacity style={styles.viewBtn}>
+            <Text style={styles.reportSummary} numberOfLines={3}>{item.summary}</Text>
+            <TouchableOpacity
+                style={styles.viewBtn}
+                onPress={() =>
+                    Alert.alert(item.title, item.details || 'No detailed report available')
+                }
+            >
                 <Text style={styles.viewBtnText}>View Details</Text>
             </TouchableOpacity>
         </View>
@@ -26,44 +72,29 @@ export default function StudentReportScreen() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.toggleWrapper}>
-                <TouchableOpacity
-                    style={[styles.toggleBtn, selectedView === 'monthly' && styles.activeToggle]}
-                    onPress={() => setSelectedView('monthly')}
-                >
-                    <Text style={styles.toggleText}>Monthly</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={[styles.toggleBtn, selectedView === 'weekly' && styles.activeToggle]}
-                    onPress={() => setSelectedView('weekly')}
-                >
-                    <Text style={styles.toggleText}>Weekly</Text>
-                </TouchableOpacity>
-            </View>
-
-            <FlatList
-                data={reports}
-                renderItem={renderReportItem}
-                keyExtractor={(item, index) => index.toString()}
-                contentContainerStyle={styles.listContainer}
-            />
+            {loading ? (
+                <ActivityIndicator size="large" color="#e75a37" style={{ marginTop: 30 }} />
+            ) : (
+                <FlatList
+                    data={reports}
+                    renderItem={renderReportItem}
+                    keyExtractor={(item) => item.id}
+                    contentContainerStyle={styles.listContainer}
+                    ListEmptyComponent={
+                        <Text style={styles.emptyText}>
+                            No reports available.
+                        </Text>
+                    }
+                />
+            )}
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#F6E9E2', padding: 10 },
-    toggleWrapper: { flexDirection: 'row', justifyContent: 'center', marginBottom: 10 },
-    toggleBtn: {
-        paddingVertical: 8,
-        paddingHorizontal: 20,
-        borderRadius: 20,
-        backgroundColor: '#ddd',
-        marginHorizontal: 5,
-    },
-    activeToggle: { backgroundColor: '#e75a37' },
-    toggleText: { color: '#000', fontWeight: '600' },
     listContainer: { paddingBottom: 20 },
+    emptyText: { textAlign: 'center', marginTop: 50, color: 'gray' },
     reportCard: {
         backgroundColor: '#fff',
         borderRadius: 12,
