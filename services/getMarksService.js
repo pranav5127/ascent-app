@@ -1,5 +1,3 @@
-// services/getMarksService.js
-
 const API_BASE_URL = "https://ascent-backend.onrender.com"
 const REPORT_API_BASE = "http://192.168.1.8:9999"
 
@@ -38,7 +36,6 @@ export const getMarksService = async (examId, studentId) => {
 
 export const generateStudentReport = async (examId, student, subjects) => {
     try {
-        // use student.id instead of student.student_id
         const fetchedMarks = await getMarksService(examId, student.id)
         if (!fetchedMarks || Object.keys(fetchedMarks).length === 0) {
             throw new Error("No marks found for this student")

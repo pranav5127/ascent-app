@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="add feature to add marks generate reports and view reports using ollama">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/studentScreens/studentWeeklyAttendanceScreen.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/teachersScreen/weeklyAttendanceScreen.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/attendanceService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/getAttendanceService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/studentTabs/viewreport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/viewreport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentTabs/classes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/classes.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/teacherTabs/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/_layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/teacherTabs/attendance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/attendance.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/teachersScreen/attendanceScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/attendanceScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/teachersScreen/createClass.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/createClass.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/teachersScreen/createExam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/createExam.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/teachersScreen/examScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/examScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/teachersScreen/performanceScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/performanceScreen.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/teachersScreen/student.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/student.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/getMarksService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/getMarksService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/getStudents.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/getStudents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/saveReportService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/saveReportService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/submitMarksService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/submitMarksService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +154,7 @@
       <workItem from="1759385794044" duration="1151000" />
       <workItem from="1759388908139" duration="31199000" />
       <workItem from="1759473620440" duration="4618000" />
-      <workItem from="1759481833153" duration="12228000" />
+      <workItem from="1759481833153" duration="16913000" />
     </task>
     <task id="LOCAL-00001" summary="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh">
       <option name="closed" value="true" />
@@ -186,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759386711099</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add feature to add marks generate reports and view reports using ollama">
+      <option name="closed" value="true" />
+      <created>1759495345103</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1759495345103</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

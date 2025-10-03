@@ -1,0 +1,105 @@
+import React, { useEffect, useState, useContext } from "react"
+import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList, ActivityIndicator, Alert } from "react-native"
+import { LinearGradient } from "expo-linear-gradient"
+import { AuthContext } from "@/context/AuthContext"
+import { getClassService } from "@/services/getClassService"
+import { useRouter } from "expo-router"
+import * as Clipboard from "expo-clipboard"
+import { Ionicons } from "@expo/vector-icons"
+
+export default function ClassesScreen() {
+    const { userProfile } = useContext(AuthContext)
+    const [classes, setClasses] = useState([])
+    const [loading, setLoading] = useState(true)
+    const router = useRouter()
+
+    useEffect(() => {
+        const fetchClasses = async () => {
+            try {
+                if (userProfile?.id) {
+                    const teacherClasses = await getClassService.getClassesByTeacher(userProfile.id)
+                    setClasses(teacherClasses)
+                }
+            } catch (err) {
+                console.error("Failed to load classes:", err)
+                Alert.alert("Error", "Failed to load classes")
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchClasses()
+    }, [userProfile])
+
+    const copyClassId = async (classId) => {
+        await Clipboard.setStringAsync(classId)
+        Alert.alert("Copied!", "Class ID copied to clipboard")
+    }
+
+    const renderClassCard = ({ item }) => (
+        <TouchableOpacity
+            style={styles.classCard}
+            onPress={() =>
+                router.push({
+                    pathname: "/teachersScreen/attendanceScreen",
+                    params: { classId: item.id, className: item.name },
+                })
+            }
+        >
+            <Image
+                source={{ uri: "https://images.pexels.com/photos/8423014/pexels-photo-8423014.jpeg" }}
+                style={styles.classImage}
+            />
+            <LinearGradient
+                colors={["transparent", "rgba(0,0,0,0.7)"]}
+                style={styles.gradientOverlay}
+            />
+            <View style={styles.classInfo}>
+                <Text style={styles.classTitle}>{item.name}</Text>
+            </View>
+            <View style={styles.cardButtons}>
+                <TouchableOpacity style={styles.copyButton} onPress={() => copyClassId(item.id)}>
+                    <Ionicons name="copy-outline" size={20} color="#fff" />
+                </TouchableOpacity>
+            </View>
+        </TouchableOpacity>
+    )
+
+    if (loading) {
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" color="#333" />
+                <Text style={styles.loadingText}>Loading your classes...</Text>
+            </View>
+        )
+    }
+
+    return (
+        <View style={styles.container}>
+
+            <Text style={styles.sectionTitle}>Your Classes</Text>
+            <FlatList
+                data={classes}
+                keyExtractor={(item) => item.id}
+                renderItem={renderClassCard}
+                contentContainerStyle={{ paddingBottom: 20 }}
+                ListEmptyComponent={<Text style={{ textAlign: "center", marginTop: 20 }}>No classes found</Text>}
+            />
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: { flex: 1, backgroundColor: "#f5efed", padding: 16 },
+    loadingContainer: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#f5efed" },
+    loadingText: { marginTop: 10, fontSize: 16, color: "#666" },
+    createButton: { backgroundColor: "#333", paddingVertical: 16, borderRadius: 16, alignItems: "center", marginBottom: 20 },
+    createButtonText: { color: "white", fontSize: 18, fontWeight: "600" },
+    sectionTitle: { fontSize: 18, fontWeight: "600", color: "#666", marginBottom: 16 },
+    classCard: { backgroundColor: "white", borderRadius: 16, overflow: "hidden", marginBottom: 16 },
+    classImage: { width: "100%", height: 160 },
+    gradientOverlay: { position: "absolute", left: 0, right: 0, bottom: 0, top: 0 },
+    classInfo: { position: "absolute", bottom: 12, left: 12 },
+    classTitle: { fontSize: 16, fontWeight: "600", color: "#fff" },
+    cardButtons: { position: "absolute", bottom: 12, right: 12, flexDirection: "row", gap: 8 },
+    copyButton: { backgroundColor: "#555", paddingHorizontal: 10, paddingVertical: 6, borderRadius: 8, justifyContent: "center", alignItems: "center" },
+})

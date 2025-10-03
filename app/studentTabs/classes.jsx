@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList, ActivityIndicator, Alert } from "react-native"
 import { useRouter } from "expo-router"
 import { AuthContext } from "@/context/AuthContext"
-import {getStudentClassesService} from "@/services/getStudentClassesService";
+import { getStudentClassesService } from "@/services/getStudentClassesService"
 
 export default function SubjectsScreen() {
     const router = useRouter()
@@ -27,20 +27,37 @@ export default function SubjectsScreen() {
     }
 
     const renderClassCard = ({ item }) => (
-        <TouchableOpacity
-            style={styles.subjectCard}
-            onPress={() =>
-                router.push({
-                    pathname: "/studentScreens/subjectResourceScreen",
-                    params: { class_id: item.id, class_name: item.name }
-                })
-            }
-        >
+        <View style={styles.subjectCard}>
             <Image source={{ uri: item.image }} style={styles.subjectImage} />
             <Text style={styles.subjectName}>{item.name}</Text>
-        </TouchableOpacity>
-    )
 
+            <View style={styles.cardButtons}>
+                <TouchableOpacity
+                    style={[styles.button, { backgroundColor: "#333" }]}
+                    onPress={() =>
+                        router.push({
+                            pathname: "/studentScreens/subjectResourceScreen",
+                            params: { class_id: item.id, class_name: item.name }
+                        })
+                    }
+                >
+                    <Text style={styles.buttonText}>Resources</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[styles.button, { backgroundColor: "#e75a37" }]}
+                    onPress={() =>
+                        router.push({
+                            pathname: "/studentScreens/studentWeeklyAttendanceScreen",
+                            params: { classId: item.id, className: item.name }
+                        })
+                    }
+                >
+                    <Text style={styles.buttonText}>View Attendance</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    )
 
     return (
         <View style={styles.container}>
@@ -85,6 +102,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         overflow: "hidden",
         marginBottom: 16,
+        paddingBottom: 12,
     },
     subjectImage: {
         width: "100%",
@@ -95,5 +113,22 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "600",
         color: "#333",
+    },
+    cardButtons: {
+        flexDirection: "row",
+        gap: 10,
+        paddingHorizontal: 12,
+        marginTop: 8,
+    },
+    button: {
+        flex: 1,
+        paddingVertical: 12,
+        borderRadius: 12,
+        alignItems: "center",
+    },
+    buttonText: {
+        color: "#fff",
+        fontWeight: "600",
+        fontSize: 14,
     },
 })
