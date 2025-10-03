@@ -29,13 +29,17 @@ export default function SubjectsScreen() {
     const renderClassCard = ({ item }) => (
         <TouchableOpacity
             style={styles.subjectCard}
-            onPress={() => router.push(`/studentScreens/content?class_id=${item.id}`)}
+            onPress={() =>
+                router.push({
+                    pathname: "/studentScreens/subjectResourceScreen",
+                    params: { class_id: item.id, class_name: item.name }
+                })
+            }
         >
             <Image source={{ uri: item.image }} style={styles.subjectImage} />
             <Text style={styles.subjectName}>{item.name}</Text>
         </TouchableOpacity>
     )
-
 
 
     return (

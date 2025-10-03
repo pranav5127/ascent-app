@@ -39,8 +39,8 @@ export default function ClassesScreen() {
             style={styles.classCard}
             onPress={() =>
                 router.push({
-                    pathname: "/teachersScreen/examScreen",
-                    params: { classId: item.id },
+                    pathname: "/teachersScreen/optionSelectScreen",
+                    params: { classId: item.id, className: item.name},
                 })
             }
         >

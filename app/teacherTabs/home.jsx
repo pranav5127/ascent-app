@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {useRouter} from "expo-router";
+import {AuthContext} from "@/context/AuthContext";
 
 const ActionButton = ({ title, onPress}) => (
     <TouchableOpacity
@@ -14,14 +15,14 @@ const ActionButton = ({ title, onPress}) => (
 );
 
 const HomeScreen = () => {
-    const user = "User";
+    const {userProfile} = useContext(AuthContext)
     const router = useRouter()
 
     return (
         <View style={styles.container}>
 
             <Text style={styles.greeting}>
-                Hi {user}
+                Hi {userProfile?.name}
             </Text>
 
             <View style={styles.aiCard}>
@@ -45,7 +46,7 @@ const HomeScreen = () => {
             >
                 <ActionButton title="Create Class" onPress={() => router.push("/teachersScreen/createClass")} />
                 <ActionButton title="Ask Ascent" onPress={() => router.push("/teacherTabs/chatbot")}/>
-                <ActionButton title="Share Contents" />
+                <ActionButton title="Share Contents" onPress={() => router.push("/teacherTabs/class")}/>
             </LinearGradient>
 
         </View>

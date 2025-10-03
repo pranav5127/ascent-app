@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="setup rbac in app ui">
-      <change afterPath="$PROJECT_DIR$/app/studentTabs/classes.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/getStudentClassesService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/joinClassService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/studentScreens/subjectResourceScreen.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/teachersScreen/optionSelectScreen.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/teachersScreen/shareContent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/getSubjectService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/shareContentService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/studentScreens/joinclass.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentScreens/joinclass.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/studentTabs/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/_layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/studentTabs/subject.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/teachersScreen/createExam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/createExam.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/teachersScreen/examScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teachersScreen/examScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentTabs/classes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/classes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentTabs/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/teacherTabs/class.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/class.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/teacherTabs/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +28,8 @@
       <list>
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
-        <option value="JSX File" />
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -65,6 +68,7 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Node.js.optionSelectScreen.jsx.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -151,6 +155,8 @@
       <workItem from="1759384578665" duration="979000" />
       <workItem from="1759385794044" duration="1151000" />
       <workItem from="1759388908139" duration="31199000" />
+      <workItem from="1759473620440" duration="4618000" />
+      <workItem from="1759481833153" duration="1186000" />
     </task>
     <task id="LOCAL-00001" summary="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh">
       <option name="closed" value="true" />

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {router} from "expo-router";
+import {AuthContext} from "@/context/AuthContext";
 
 
 const ActionButton = ({ title, onPress }) => (
@@ -15,19 +16,19 @@ const ActionButton = ({ title, onPress }) => (
 );
 
 const HomeScreen = () => {
-    const user = "Intern";
+    const {userProfile} =  useContext(AuthContext)
 
     return (
         <View style={styles.container}>
 
             <Text style={styles.greeting}>
-                Hi {user}
+                Hi {userProfile?.name}
             </Text>
 
             <View style={styles.aiCard}>
-                <Text style={styles.aiCardText}>
-                    AI Handles the Data, So You Can <Text style={styles.aiCardTextAccent}>Lead the Classroom.</Text>
-                </Text>
+                    <Text style={styles.aiCardText}>
+                        AI Handles the Work, So You Can <Text style={styles.aiCardTextAccent}>Focus on Learning.</Text>
+                    </Text>
 
                 <TouchableOpacity style={styles.exploreButton} activeOpacity={0.7} onPress={() => router.push("/studentTabs/chatbot")}>
                     <Text style={styles.exploreButtonText}>
@@ -44,7 +45,7 @@ const HomeScreen = () => {
                 style={styles.actionArea}
             >
                 <ActionButton title="Join Class" onPress={() => router.push("/studentScreens/joinclass")}/>
-                <ActionButton title="Ask Ascent" onPress={() => router.push("/studentTabs//studentTabs/chatbot")}/>
+                <ActionButton title="Ask Ascent" onPress={() => router.push("/studentTabs/chatbot")}/>
             </LinearGradient>
 
         </View>
