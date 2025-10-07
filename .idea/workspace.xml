@@ -4,28 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="add feature to add and view attendance for users">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="Update url.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/urls.js" beforeDir="false" afterPath="$PROJECT_DIR$/constants/urls.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/AuthService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/attendanceService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/attendanceService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/chatbotService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/chatbotService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/classService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/classService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/examService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/examService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/getAttendanceService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/getAttendanceService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/getClassService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/getClassService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/getExamService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/getExamService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/getMarksService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/getMarksService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/getStudentClassesService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/getStudentClassesService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/getStudents.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/getStudents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/getSubjectService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/getSubjectService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/joinClassService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/joinClassService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/notification.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/saveReportService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/saveReportService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/shareContentService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/shareContentService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/submitMarksService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/submitMarksService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/en.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +155,7 @@
       <workItem from="1759586808955" duration="7000" />
       <workItem from="1759587655479" duration="317000" />
       <workItem from="1759735010068" duration="1247000" />
-      <workItem from="1759827962116" duration="579000" />
+      <workItem from="1759827962116" duration="1630000" />
     </task>
     <task id="LOCAL-00001" summary="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh">
       <option name="closed" value="true" />
@@ -216,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759500047966</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update url.js">
+      <option name="closed" value="true" />
+      <created>1759828566397</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759828566397</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +240,7 @@
     <MESSAGE value="setup rbac in app ui" />
     <MESSAGE value="add feature to add marks generate reports and view reports using ollama" />
     <MESSAGE value="add feature to add and view attendance for users" />
-    <option name="LAST_COMMIT_MESSAGE" value="add feature to add and view attendance for users" />
+    <MESSAGE value="Update url.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update url.js" />
   </component>
 </project>

@@ -5,5 +5,15 @@
     "email": "Email",
     "logout": "Log Out",
     "role": "Role"
+  },
+  "joinClass": {
+    "title": "Join Class",
+    "placeholder": "Class Code",
+    "button": "Join",
+    "successTitle": "Success",
+    "successMessage": "You have joined the class!",
+    "errorTitle": "Failed to join class",
+    "emptyAlert": "Please enter a class code",
+    "errorMessage": "Something went wrong"
   }
 }

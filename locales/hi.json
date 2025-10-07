@@ -5,5 +5,15 @@
     "email": "ईमेल",
     "logout": "लॉग-आउट",
     "role": "भूमिका"
+  },
+  "joinClass": {
+    "title": "कक्षा से जुड़ें",
+    "placeholder": "कक्षा कोड",
+    "button": "जुड़ें",
+    "successTitle": "सफलता",
+    "successMessage": "आप कक्षा से जुड़ गए हैं!",
+    "errorTitle": "कक्षा से जुड़ने में विफल",
+    "emptyAlert": "कृपया कक्षा कोड दर्ज करें",
+    "errorMessage": "कुछ गलत हो गया"
   }
 }
