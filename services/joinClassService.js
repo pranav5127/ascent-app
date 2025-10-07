@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ascent-backend.onrender.com"
+import {API_BASE_URL} from "@/constants/urls";
 
 export const joinClassService = async ({ class_id, student_id}) => {
     if (!class_id) throw new Error("Class id is required")

@@ -1,7 +1,9 @@
+import {API_BASE_URL} from "@/constants/urls";
+
 export async function fetchWeeklyAttendance(classId, startDate, endDate, studentId = null) {
     try {
         const res = await fetch(
-            `https://ascent-backend.onrender.com/attendance/class/${classId}?start_date=${startDate}&end_date=${endDate}`,
+            `${API_BASE_URL}/attendance/class/${classId}?start_date=${startDate}&end_date=${endDate}`,
             { headers: { accept: "application/json" } }
         )
 

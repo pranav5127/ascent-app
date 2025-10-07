@@ -1,4 +1,4 @@
-import { NOTIFICATION_URL } from "@/constants/urls";
+import {API_BASE_URL} from "@/constants/urls";
 
 export const sendNotification = async (report) => {
     try {
@@ -10,7 +10,7 @@ export const sendNotification = async (report) => {
 
         if (!summary) throw new Error("No summary available in the report")
 
-        const res = await fetch(`${NOTIFICATION_URL}/message`, {
+        const res = await fetch(`${API_BASE_URL}/message`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

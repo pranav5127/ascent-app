@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ascent-backend.onrender.com"
+import {API_BASE_URL} from "@/constants/urls";
 
 export const createExamService = async ({ class_id, name, date }) => {
     if (!name || !name.trim()) throw new Error("Exam name is required")

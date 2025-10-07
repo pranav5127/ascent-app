@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ascent-backend.onrender.com"
+import {API_BASE_URL} from "@/constants/urls";
 
 export const getSubjectsService = async (classId) => {
     console.log("Fetching all subjects from API...")

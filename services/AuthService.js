@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
+import {API_BASE_URL} from "@/constants/urls";
 
-const BASE_URL = "https://ascent-backend.onrender.com"
 
 const parseResponse = async (response) => {
     const text = await response.text()
@@ -14,7 +14,7 @@ const parseResponse = async (response) => {
 export const AuthService = {
 
     signUp: async (userData) => {
-        const response = await fetch(`${BASE_URL}/users/`, {
+        const response = await fetch(`${API_BASE_URL}/users/`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(userData)
@@ -26,7 +26,7 @@ export const AuthService = {
         return await parseResponse(response)
     },
     login: async (email, password) => {
-        const response = await fetch(`${BASE_URL}/auth/login`, {
+        const response = await fetch(`${API_BASE_URL}/auth/login`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({email, password})
@@ -45,7 +45,7 @@ export const AuthService = {
     },
     getUserProfile: async (userId) => {
         try {
-            const res = await fetch(`${BASE_URL}/users/${userId}`)
+            const res = await fetch(`${API_BASE_URL}/users/${userId}`)
 
             if (!res.ok) {
                 throw new Error(`Failed to fetch user profile: ${res.status}`)

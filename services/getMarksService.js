@@ -1,5 +1,4 @@
-const API_BASE_URL = "https://ascent-backend.onrender.com"
-const REPORT_API_BASE = "http://192.168.1.8:9999"
+import {API_BASE_URL, BASE_URL} from "@/constants/urls";
 
 export const getMarksService = async (examId, studentId) => {
     try {
@@ -65,7 +64,7 @@ export const generateStudentReport = async (examId, student, subjects) => {
             }
         ]
 
-        const response = await fetch(`${REPORT_API_BASE}/generate-reports`, {
+        const response = await fetch(`${BASE_URL}/generate-reports`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)

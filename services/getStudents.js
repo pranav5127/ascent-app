@@ -1,15 +1,17 @@
+import {API_BASE_URL} from "@/constants/urls";
+
 export async function fetchClassStudents(classId) {
     try {
         // Fetch students of the class
         const studentsRes = await fetch(
-            `https://ascent-backend.onrender.com/classes/${classId}/students`,
+            `${API_BASE_URL}/classes/${classId}/students`,
             { headers: { accept: "application/json" } }
         )
         const studentsData = await studentsRes.json()
 
         // Fetch all users
         const usersRes = await fetch(
-            `https://ascent-backend.onrender.com/users/`,
+            `${API_BASE_URL}/users/`,
             { headers: { accept: "application/json" } }
         )
         const usersData = await usersRes.json()

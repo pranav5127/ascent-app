@@ -1,6 +1,6 @@
 import { Alert } from "react-native"
+import {BASE_URL} from "@/constants/urls";
 
-const BASE_URL = "http://192.168.1.8:9999"
 
 export async function sendChatMessage(message, model = "tinyllama:latest") {
     try {

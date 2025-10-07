@@ -1,8 +1,10 @@
+import {API_BASE_URL} from "@/constants/urls";
+
 export async function saveAttendance(attendanceRecord) {
     try {
         console.log("Sending attendance record to backend:", attendanceRecord)
 
-        const res = await fetch("https://ascent-backend.onrender.com/attendance/", {
+        const res = await fetch(API_BASE_URL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(attendanceRecord),

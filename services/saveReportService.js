@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ascent-backend.onrender.com"
+import {API_BASE_URL} from "@/constants/urls";
 
 export const saveReportService = async ({ student_id, class_id, period, report_text }) => {
     try {

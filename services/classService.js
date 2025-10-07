@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ascent-backend.onrender.com"
+import {API_BASE_URL} from "@/constants/urls";
 
 export const createClassWithSubjects = async (className, teacherId, subjects) => {
     if (!className.trim()) throw new Error("Class name is required")
@@ -24,7 +24,7 @@ export const createClassWithSubjects = async (className, teacherId, subjects) =>
         const classId = classData.id
         if (!classId) throw new Error("No class id returned from API")
 
-        console.log("✅ Class created:", classId)
+        console.log("Class created:", classId)
 
         //  Create subjects
         for (const subject of subjects) {
