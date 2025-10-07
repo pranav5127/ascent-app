@@ -4,7 +4,7 @@ export async function saveAttendance(attendanceRecord) {
     try {
         console.log("Sending attendance record to backend:", attendanceRecord)
 
-        const res = await fetch(API_BASE_URL, {
+        const res = await fetch(`${API_BASE_URL}/attendance`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(attendanceRecord),
