@@ -1,32 +1,32 @@
 import {API_BASE_URL} from "@/constants/urls";
 
-export const sendNotification = async (report) => {
+export const sendNotification = async ({student_id, class_id, type, notification}) => {
     try {
-        if (!report?.id) throw new Error("Report ID missing")
-        if (!report.parent_mobile) throw new Error("Parent mobile number missing")
+        const payload = {
+            student_id,
+            class_id,
+            type,
+            notification,
+            created_at: new Date().toISOString(),
+            read: false
+        }
 
-        const receiver = `+91${report.parent_mobile}`
-        const summary = report.report_data?.summary?.trim() || ""
-
-        if (!summary) throw new Error("No summary available in the report")
-
-        const res = await fetch(`${API_BASE_URL}/message`, {
+        const response = await fetch(`${API_BASE_URL}/notifications/`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                sender_contact: "14155238886",
-                receiver_contact: receiver,
-                message_text: `Report for ${report.student_name || "Student"}:\n\nSummary:\n${summary}`
-            })
+            headers: {
+                "Content-Type": "application/json",
+                accept: "application/json"
+            },
+            body: JSON.stringify(payload)
         })
 
-        if (!res.ok) throw new Error(`Failed to send notification: ${res.status}`)
-        const data = await res.json()
-        if (data?.status !== "Success") throw new Error(data?.detail || "Notification sending failed")
+        if(!response.ok) {
+            const errText = await response.text()
+            throw errText
+        }
 
-        return data
     } catch (err) {
-        console.error("Error in sendNotification:", err)
-        throw new Error(err?.message || "Failed to send notification")
+        console.log("unable to send notification" + err)
+        throw err
     }
 }
