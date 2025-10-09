@@ -1,4 +1,21 @@
 {
+  "teacherHome": {
+    "greeting": "Hi",
+    "aiCardLine1": "AI Handles the Data, So You Can",
+    "aiCardLine2": "Lead the Classroom.",
+    "explore": "Explore →",
+    "createClass": "Create Class",
+    "askAscent": "Ask Ascent",
+    "shareContents": "Share Contents"
+  },
+  "home": {
+    "greeting": "Hi",
+    "aiCardLine1": "AI Handles the Work, So You Can",
+    "aiCardLine2": "Focus on Learning.",
+    "explore": "Explore →",
+    "joinClass": "Join Class",
+    "askAscent": "Ask Ascent"
+  },
   "profile": {
     "userId": "User ID",
     "fullName": "Full Name",
@@ -15,5 +32,14 @@
     "errorTitle": "Failed to join class",
     "emptyAlert": "Please enter a class code",
     "errorMessage": "Something went wrong"
+  },
+  "attendance": {
+    "header": "Weekly Attendance",
+    "loading": "Loading attendance...",
+    "error": "Failed to load weekly attendance.",
+    "noRecords": "No attendance records",
+    "present": "Present",
+    "absent": "Absent",
+    "notMarked": "Not Marked"
   }
 }

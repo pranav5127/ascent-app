@@ -1,10 +1,11 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import {useRouter} from "expo-router";
-import {AuthContext} from "@/context/AuthContext";
+import { useRouter } from "expo-router";
+import { AuthContext } from "@/context/AuthContext";
+import {i18n} from "@/i18n";
 
-const ActionButton = ({ title, onPress}) => (
+const ActionButton = ({ title, onPress }) => (
     <TouchableOpacity
         style={styles.actionButton}
         activeOpacity={0.8}
@@ -15,24 +16,32 @@ const ActionButton = ({ title, onPress}) => (
 );
 
 const HomeScreen = () => {
-    const {userProfile} = useContext(AuthContext)
-    const router = useRouter()
+    const { userProfile } = useContext(AuthContext);
+    const router = useRouter();
 
     return (
         <View style={styles.container}>
-
+            {/* Greeting */}
             <Text style={styles.greeting}>
-                Hi {userProfile?.name}
+                {i18n.t("teacherHome.greeting")} {userProfile?.name}
             </Text>
 
+            {/* AI Info Card */}
             <View style={styles.aiCard}>
                 <Text style={styles.aiCardText}>
-                    AI Handles the Data, So You Can <Text style={styles.aiCardTextAccent}>Lead the Classroom.</Text>
+                    {i18n.t("teacherHome.aiCardLine1")}{" "}
+                    <Text style={styles.aiCardTextAccent}>
+                        {i18n.t("teacherHome.aiCardLine2")}
+                    </Text>
                 </Text>
 
-                <TouchableOpacity style={styles.exploreButton} activeOpacity={0.7} onPress={() => router.push("/teacherTabs/chatbot")}>
+                <TouchableOpacity
+                    style={styles.exploreButton}
+                    activeOpacity={0.7}
+                    onPress={() => router.push("/teacherTabs/chatbot")}
+                >
                     <Text style={styles.exploreButtonText}>
-                        Explore →
+                        {i18n.t("teacherHome.explore")}
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -44,11 +53,19 @@ const HomeScreen = () => {
                 end={{ x: 0, y: 1 }}
                 style={styles.actionArea}
             >
-                <ActionButton title="Create Class" onPress={() => router.push("/teachersScreen/createClass")} />
-                <ActionButton title="Ask Ascent" onPress={() => router.push("/teacherTabs/chatbot")}/>
-                <ActionButton title="Share Contents" onPress={() => router.push("/teacherTabs/class")}/>
+                <ActionButton
+                    title={i18n.t("teacherHome.createClass")}
+                    onPress={() => router.push("/teachersScreen/createClass")}
+                />
+                <ActionButton
+                    title={i18n.t("teacherHome.askAscent")}
+                    onPress={() => router.push("/teacherTabs/chatbot")}
+                />
+                <ActionButton
+                    title={i18n.t("teacherHome.shareContents")}
+                    onPress={() => router.push("/teacherTabs/class")}
+                />
             </LinearGradient>
-
         </View>
     );
 };
@@ -60,14 +77,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingTop: 16,
     },
-
     greeting: {
         fontSize: 32,
         fontWeight: '700',
         color: '#1F2937',
         marginBottom: 24,
     },
-
     aiCard: {
         backgroundColor: '#FFFFFF',
         borderRadius: 24,
@@ -108,7 +123,6 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 16,
     },
-
     actionArea: {
         flex: 1,
         height: 350,
@@ -123,7 +137,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginBottom: 10
     },
-
     actionButton: {
         backgroundColor: '#FFFFFF',
         borderRadius: 16,

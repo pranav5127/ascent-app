@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="Update url.js">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_2_25,_4_44 PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_2_25,_4_47 PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_2_25__4_44PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_2_25__4_47PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/studentScreens/studentreport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentScreens/studentreport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/attendanceService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/attendanceService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentScreens/studentWeeklyAttendanceScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentScreens/studentWeeklyAttendanceScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentTabs/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/teacherTabs/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locales/hi.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/hi.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/notification.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +71,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;notification&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/pranav/Projects/WebstormProjects/ascent-app/ascent-app/app/(studentTabs)&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
@@ -158,6 +166,10 @@
       <workItem from="1759735010068" duration="1247000" />
       <workItem from="1759827962116" duration="4578000" />
       <workItem from="1759832593469" duration="5000" />
+      <workItem from="1760002270978" duration="1031000" />
+      <workItem from="1760003614704" duration="512000" />
+      <workItem from="1760017399677" duration="5126000" />
+      <workItem from="1760024484521" duration="1026000" />
     </task>
     <task id="LOCAL-00001" summary="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh">
       <option name="closed" value="true" />
