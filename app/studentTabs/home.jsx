@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import {router} from "expo-router";
-import {AuthContext} from "@/context/AuthContext";
-
+import { router } from "expo-router";
+import { AuthContext } from "@/context/AuthContext";
+import {i18n} from "@/i18n";
 
 const ActionButton = ({ title, onPress }) => (
     <TouchableOpacity
@@ -16,23 +16,32 @@ const ActionButton = ({ title, onPress }) => (
 );
 
 const HomeScreen = () => {
-    const {userProfile} =  useContext(AuthContext)
+    const { userProfile } = useContext(AuthContext);
 
     return (
         <View style={styles.container}>
 
+            {/* Greeting */}
             <Text style={styles.greeting}>
-                Hi {userProfile?.name}
+                {i18n.t("home.greeting")} {userProfile?.name}
             </Text>
 
+            {/* AI Card */}
             <View style={styles.aiCard}>
-                    <Text style={styles.aiCardText}>
-                        AI Handles the Work, So You Can <Text style={styles.aiCardTextAccent}>Focus on Learning.</Text>
+                <Text style={styles.aiCardText}>
+                    {i18n.t("home.aiCardLine1")}{" "}
+                    <Text style={styles.aiCardTextAccent}>
+                        {i18n.t("home.aiCardLine2")}
                     </Text>
+                </Text>
 
-                <TouchableOpacity style={styles.exploreButton} activeOpacity={0.7} onPress={() => router.push("/studentTabs/chatbot")}>
+                <TouchableOpacity
+                    style={styles.exploreButton}
+                    activeOpacity={0.7}
+                    onPress={() => router.push("/studentTabs/chatbot")}
+                >
                     <Text style={styles.exploreButtonText}>
-                        Explore →
+                        {i18n.t("home.explore")}
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -44,10 +53,15 @@ const HomeScreen = () => {
                 end={{ x: 0, y: 1 }}
                 style={styles.actionArea}
             >
-                <ActionButton title="Join Class" onPress={() => router.push("/studentScreens/joinclass")}/>
-                <ActionButton title="Ask Ascent" onPress={() => router.push("/studentTabs/chatbot")}/>
+                <ActionButton
+                    title={i18n.t("home.joinClass")}
+                    onPress={() => router.push("/studentScreens/joinclass")}
+                />
+                <ActionButton
+                    title={i18n.t("home.askAscent")}
+                    onPress={() => router.push("/studentTabs/chatbot")}
+                />
             </LinearGradient>
-
         </View>
     );
 };
@@ -59,14 +73,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingTop: 16,
     },
-
     greeting: {
         fontSize: 32,
         fontWeight: '700',
         color: '#1F2937',
         marginBottom: 24,
     },
-
     aiCard: {
         backgroundColor: '#FFFFFF',
         borderRadius: 24,
@@ -107,7 +119,6 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 16,
     },
-
     actionArea: {
         flex: 1,
         height: 350,
@@ -122,7 +133,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginBottom: 10
     },
-
     actionButton: {
         backgroundColor: '#FFFFFF',
         borderRadius: 16,
@@ -141,6 +151,6 @@ const styles = StyleSheet.create({
         color: '#374151',
         textAlign: 'center',
     },
-});
+})
 
-export default HomeScreen;
+export default HomeScreen

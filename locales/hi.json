@@ -1,4 +1,22 @@
 {
+  "teacherHome": {
+    "greeting": "नमस्ते",
+    "aiCardLine1": "AI डेटा संभालता है ताकि आप",
+    "aiCardLine2": "कक्षा का नेतृत्व कर सकें।",
+    "explore": "खोजें →",
+    "createClass": "कक्षा बनाएं",
+    "askAscent": "आस्क असेंट",
+    "shareContents": "सामग्री साझा करें"
+  },
+  "home": {
+    "greeting": "नमस्ते",
+    "aiCardLine1": "AI काम संभालता है ताकि आप",
+    "aiCardLine2": "सीखने पर ध्यान केंद्रित कर सकें।",
+    "explore": "खोजें →",
+    "joinClass": "कक्षा से जुड़ें",
+    "askAscent": "आस्क असेंट",
+    "reports": "रिपोर्ट्स"
+  },
   "profile": {
     "userId": "उपयोगकर्ता आईडी",
     "fullName": "पूरा नाम",
@@ -15,5 +33,23 @@
     "errorTitle": "कक्षा से जुड़ने में विफल",
     "emptyAlert": "कृपया कक्षा कोड दर्ज करें",
     "errorMessage": "कुछ गलत हो गया"
+  },
+  "attendance": {
+    "header": "साप्ताहिक उपस्थिति",
+    "loading": "उपस्थिति लोड हो रही है...",
+    "error": "साप्ताहिक उपस्थिति लोड करने में विफल।",
+    "noRecords": "कोई उपस्थिति रिकॉर्ड नहीं",
+    "present": "उपस्थित",
+    "absent": "अनुपस्थित",
+    "notMarked": "चिह्नित नहीं"
+  },
+  "tabs": {
+    "home": "होम",
+    "teacherHome": "होम",
+    "chatbot": "आस्क असेंट",
+    "classes": "कक्षाएँ",
+    "viewreport": "रिपोर्ट्स",
+    "attendance": "उपस्थिति",
+    "class": "कक्षा"
   }
 }
