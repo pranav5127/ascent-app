@@ -38,8 +38,8 @@ export default function StudentTabsLayout() {
                 <Tabs.Screen
                     name="home"
                     options={{
-                        title: i18n.t("home.greeting"),
-                        tabBarLabel: i18n.t("home.greeting"),
+                        title: i18n.t("tabs.home"),
+                        tabBarLabel: i18n.t("tabs.home"),
                         tabBarIcon: ({ color, size }) => (
                             <MaterialIcons name="home" size={size} color={color} />
                         ),
@@ -48,7 +48,7 @@ export default function StudentTabsLayout() {
                 <Tabs.Screen
                     name="chatbot"
                     options={{
-                        title: i18n.t("home.askAscent"),
+                        title: i18n.t("tabs.chatbot"),
                         tabBarLabel: i18n.t("home.askAscent"),
                         tabBarIcon: ({ color, size }) => (
                             <MaterialIcons name="chat" size={size} color={color} />
@@ -58,8 +58,8 @@ export default function StudentTabsLayout() {
                 <Tabs.Screen
                     name="classes"
                     options={{
-                        title: i18n.t("home.joinClass"),
-                        tabBarLabel: i18n.t("home.joinClass"),
+                        title: i18n.t("tabs.classes"),
+                        tabBarLabel: i18n.t("tabs.classes"),
                         tabBarIcon: ({ color, size }) => (
                             <MaterialIcons name="library-books" size={size} color={color} />
                         ),
@@ -68,8 +68,8 @@ export default function StudentTabsLayout() {
                 <Tabs.Screen
                     name="viewreport"
                     options={{
-                        title: i18n.t("home.reports") || "Reports",
-                        tabBarLabel: i18n.t("home.reports") || "Reports",
+                        title: i18n.t("tabs.viewreport") ,
+                        tabBarLabel: i18n.t("tabs.viewreport"),
                         tabBarIcon: ({ color, size }) => (
                             <MaterialIcons name="card-membership" size={size} color={color} />
                         ),

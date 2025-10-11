@@ -30,28 +30,28 @@ export default function TeacherTabsLayout() {
                 <Tabs.Screen
                     name="home"
                     options={{
-                        title: i18n.t("teacherHome.greeting"),
+                        title: i18n.t("tabs.home"),
                         tabBarIcon: ({ color, size }) => <MaterialIcons name="home" size={size} color={color} />
                     }}
                 />
                 <Tabs.Screen
                     name="class"
                     options={{
-                        title: i18n.t("teacherHome.createClass"),
+                        title: i18n.t("tabs.classes"),
                         tabBarIcon: ({ color, size }) => <MaterialIcons name="class" size={size} color={color} />
                     }}
                 />
                 <Tabs.Screen
                     name="chatbot"
                     options={{
-                        title: i18n.t("teacherHome.askAscent"),
+                        title: i18n.t("tabs.chatbot"),
                         tabBarIcon: ({ color, size }) => <MaterialIcons name="chat" size={size} color={color} />
                     }}
                 />
                 <Tabs.Screen
                     name="attendance"
                     options={{
-                        title: i18n.t("attendance.header"),
+                        title: i18n.t("tabs.attendance"),
                         tabBarIcon: ({ color, size }) => <MaterialIcons name="event" size={size} color={color} />
                     }}
                 />
