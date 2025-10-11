@@ -24,7 +24,7 @@ export default function JoinClass() {
                     student_id: userProfile.id
                 })
                 console.log(joinClass)
-                Alert.alert(i18n.t("joinClass.successTitle"), t("joinClass.successMessage"))
+                Alert.alert(i18n.t("joinClass.successTitle"), i18n.t("joinClass.successMessage"))
             }
         } catch (err) {
             Alert.alert(i18n.t("joinClass.errorTitle"), err.message || t("joinClass.errorMessage"))

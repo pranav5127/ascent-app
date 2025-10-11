@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="Update url.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/teacherTabs/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/_layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentScreens/joinclass.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentScreens/joinclass.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentTabs/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/_layout.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,6 +169,7 @@
       <workItem from="1760160716449" duration="2171000" />
       <workItem from="1760165629124" duration="131000" />
       <workItem from="1760165936236" duration="1074000" />
+      <workItem from="1760168819838" duration="1441000" />
     </task>
     <task id="LOCAL-00001" summary="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh">
       <option name="closed" value="true" />
@@ -234,7 +236,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="HEAD" />
+                        <option value="notification" />
                       </list>
                     </value>
                   </entry>
