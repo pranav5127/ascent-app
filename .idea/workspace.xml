@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adbe415b-556f-4fbc-9eeb-4ef243de9ffd" name="Changes" comment="Update url.js">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_2_25,_4_44 PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_2_25,_4_47 PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_2_25__4_44PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_2_25__4_47PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/studentScreens/studentWeeklyAttendanceScreen.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentScreens/studentWeeklyAttendanceScreen.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/studentTabs/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/_layout.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/studentTabs/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/studentTabs/home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/teacherTabs/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/teacherTabs/_layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/teacherTabs/_layout.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/locales/hi.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/hi.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/notification.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +34,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -169,7 +165,11 @@
       <workItem from="1760002270978" duration="1031000" />
       <workItem from="1760003614704" duration="512000" />
       <workItem from="1760017399677" duration="5126000" />
-      <workItem from="1760024484521" duration="1026000" />
+      <workItem from="1760024484521" duration="1330000" />
+      <workItem from="1760026016545" duration="5000" />
+      <workItem from="1760029905843" duration="22000" />
+      <workItem from="1760155485138" duration="2801000" />
+      <workItem from="1760160716449" duration="2171000" />
     </task>
     <task id="LOCAL-00001" summary="update: addParent.tsx - softkeyboard change to number-pad when entering mobile number.&#10;parentList.tsx - pull down to refresh">
       <option name="closed" value="true" />

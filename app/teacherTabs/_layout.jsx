@@ -3,6 +3,7 @@ import { Pressable } from "react-native"
 import { Ionicons } from "@expo/vector-icons"
 import MaterialIcons from "@expo/vector-icons/MaterialIcons"
 import { StatusBar } from "expo-status-bar"
+import {i18n} from "@/i18n"
 
 export default function TeacherTabsLayout() {
     const router = useRouter()
@@ -26,10 +27,34 @@ export default function TeacherTabsLayout() {
                     tabBarStyle: { borderTopWidth: 0, elevation: 0, shadowOpacity: 0, backgroundColor: "#F4ECE7" }
                 }}
             >
-                <Tabs.Screen name="home" options={{ title: "Home", tabBarIcon: ({ color, size }) => <MaterialIcons name="home" size={size} color={color} /> }} />
-                <Tabs.Screen name="class" options={{ title: "Class", tabBarIcon: ({ color, size }) => <MaterialIcons name="class" size={size} color={color} /> }} />
-                <Tabs.Screen name="chatbot" options={{ title: "Ask Ascent", tabBarIcon: ({ color, size }) => <MaterialIcons name="chat" size={size} color={color} /> }} />
-                <Tabs.Screen name="attendance" options={{ title: "Attendance", tabBarIcon: ({ color, size }) => <MaterialIcons name="event" size={size} color={color} /> }} />
+                <Tabs.Screen
+                    name="home"
+                    options={{
+                        title: i18n.t("teacherHome.greeting"),
+                        tabBarIcon: ({ color, size }) => <MaterialIcons name="home" size={size} color={color} />
+                    }}
+                />
+                <Tabs.Screen
+                    name="class"
+                    options={{
+                        title: i18n.t("teacherHome.createClass"),
+                        tabBarIcon: ({ color, size }) => <MaterialIcons name="class" size={size} color={color} />
+                    }}
+                />
+                <Tabs.Screen
+                    name="chatbot"
+                    options={{
+                        title: i18n.t("teacherHome.askAscent"),
+                        tabBarIcon: ({ color, size }) => <MaterialIcons name="chat" size={size} color={color} />
+                    }}
+                />
+                <Tabs.Screen
+                    name="attendance"
+                    options={{
+                        title: i18n.t("attendance.header"),
+                        tabBarIcon: ({ color, size }) => <MaterialIcons name="event" size={size} color={color} />
+                    }}
+                />
             </Tabs>
             <StatusBar style="dark" />
         </>

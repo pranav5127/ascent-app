@@ -151,6 +151,6 @@ const styles = StyleSheet.create({
         color: '#374151',
         textAlign: 'center',
     },
-});
+})
 
-export default HomeScreen;
+export default HomeScreen

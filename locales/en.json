@@ -14,7 +14,8 @@
     "aiCardLine2": "Focus on Learning.",
     "explore": "Explore →",
     "joinClass": "Join Class",
-    "askAscent": "Ask Ascent"
+    "askAscent": "Ask Ascent",
+    "reports": "Reports"
   },
   "profile": {
     "userId": "User ID",
@@ -41,5 +42,14 @@
     "present": "Present",
     "absent": "Absent",
     "notMarked": "Not Marked"
+  },
+  "tabs": {
+    "home": "Home",
+    "teacherHome": "Home",
+    "chatbot": "Ask Ascent",
+    "classes": "Classes",
+    "viewreport": "Reports",
+    "attendance": "Attendance",
+    "class": "Class"
   }
 }

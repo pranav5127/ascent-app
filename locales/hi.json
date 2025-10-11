@@ -14,7 +14,8 @@
     "aiCardLine2": "सीखने पर ध्यान केंद्रित कर सकें।",
     "explore": "खोजें →",
     "joinClass": "कक्षा से जुड़ें",
-    "askAscent": "आस्क असेंट"
+    "askAscent": "आस्क असेंट",
+    "reports": "रिपोर्ट्स"
   },
   "profile": {
     "userId": "उपयोगकर्ता आईडी",
@@ -41,5 +42,14 @@
     "present": "उपस्थित",
     "absent": "अनुपस्थित",
     "notMarked": "चिह्नित नहीं"
+  },
+  "tabs": {
+    "home": "होम",
+    "teacherHome": "होम",
+    "chatbot": "आस्क असेंट",
+    "classes": "कक्षाएँ",
+    "viewreport": "रिपोर्ट्स",
+    "attendance": "उपस्थिति",
+    "class": "कक्षा"
   }
 }
