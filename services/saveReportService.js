@@ -1,4 +1,5 @@
 import {API_BASE_URL} from "@/constants/urls";
+import {sendNotification} from "@/services/notification";
 
 export const saveReportService = async ({ student_id, class_id, period, report_text }) => {
     try {
@@ -10,6 +11,7 @@ export const saveReportService = async ({ student_id, class_id, period, report_t
             created_at: new Date().toISOString()
         }
 
+
         const response = await fetch(`${API_BASE_URL}/reports/`, {
             method: "POST",
             headers: {
@@ -19,6 +21,8 @@ export const saveReportService = async ({ student_id, class_id, period, report_t
             body: JSON.stringify(payload)
         })
 
+      //  await sendNotification(student_id, class_id, "report-notification", "new report generated")
+
         if (!response.ok) {
             const errText = await response.text()
             throw new Error(errText || "Failed to save report")
@@ -26,8 +30,8 @@ export const saveReportService = async ({ student_id, class_id, period, report_t
 
         const savedReport = await response.json()
         return savedReport
-    } catch (error) {
-        console.error("Error in saveReportService:", error)
-        throw error
+    } catch (err) {
+        console.error("Error in saveReportService:", err)
+        throw err
     }
 }

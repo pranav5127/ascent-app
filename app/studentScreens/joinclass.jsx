@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient"
 import { AuthContext } from "@/context/AuthContext"
 import { joinClassService } from "@/services/joinClassService"
 import { useTranslation } from "react-i18next"
+import {i18n} from "@/i18n";
 
 export default function JoinClass() {
     const [classCode, setClassCode] = useState("")
@@ -12,7 +13,7 @@ export default function JoinClass() {
 
     const handleJoinClass = async () => {
         if (!classCode.trim()) {
-            Alert.alert(t("joinClass.emptyAlert"))
+            Alert.alert(i18n.t("joinClass.emptyAlert"))
             return
         }
 
@@ -23,16 +24,16 @@ export default function JoinClass() {
                     student_id: userProfile.id
                 })
                 console.log(joinClass)
-                Alert.alert(t("joinClass.successTitle"), t("joinClass.successMessage"))
+                Alert.alert(i18n.t("joinClass.successTitle"), t("joinClass.successMessage"))
             }
         } catch (err) {
-            Alert.alert(t("joinClass.errorTitle"), err.message || t("joinClass.errorMessage"))
+            Alert.alert(i18n.t("joinClass.errorTitle"), err.message || t("joinClass.errorMessage"))
         }
     }
 
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>{t("joinClass.title")}</Text>
+            <Text style={styles.header}>{i18n.t("joinClass.title")}</Text>
 
             <LinearGradient
                 colors={["#a43313", "#e97351"]}
@@ -42,14 +43,14 @@ export default function JoinClass() {
             >
                 <TextInput
                     style={styles.input}
-                    placeholder={t("joinClass.placeholder")}
+                    placeholder={i18n.t("joinClass.placeholder")}
                     placeholderTextColor="#888"
                     value={classCode}
                     onChangeText={setClassCode}
                 />
 
                 <TouchableOpacity style={styles.button} onPress={handleJoinClass}>
-                    <Text style={styles.buttonText}>{t("joinClass.button")}</Text>
+                    <Text style={styles.buttonText}>{i18n.t("joinClass.button")}</Text>
                 </TouchableOpacity>
             </LinearGradient>
         </View>
